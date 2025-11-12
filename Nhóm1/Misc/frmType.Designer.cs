@@ -58,7 +58,7 @@
             this.lvwCategory.Location = new System.Drawing.Point(12, 12);
             this.lvwCategory.MultiSelect = false;
             this.lvwCategory.Name = "lvwCategory";
-            this.lvwCategory.Size = new System.Drawing.Size(184, 159);
+            this.lvwCategory.Size = new System.Drawing.Size(184, 151);
             this.lvwCategory.TabIndex = 1;
             this.lvwCategory.UseCompatibleStateImageBehavior = false;
             this.lvwCategory.View = System.Windows.Forms.View.Details;

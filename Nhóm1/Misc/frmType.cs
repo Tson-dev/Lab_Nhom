@@ -48,6 +48,7 @@ namespace Nhóm1.TSon
             this.mode = 1;
             ResizeForm(0);
             EnableControl(true);
+            lvwCategory.Enabled = false;
         }
 
         private void tsiUpdate_Click(object sender, EventArgs e)
@@ -55,19 +56,24 @@ namespace Nhóm1.TSon
             this.mode = 1;
             ResizeForm(0);
             EnableControl(true);
+            lvwCategory.Enabled = false;
             this.txtName.Text = lvwCategory.SelectedItems[0].SubItems[1].Text;
         }
 
         private void tsiDelete_Click(object sender, EventArgs e)
         {
             this.mode = 3;
-            if(InsertUpdateDelete(mode) > 0)
+            if (MessageBox.Show("Are you sure to Delete", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MessageBox.Show("Delete success");
-            }
-            else
-            {
-                MessageBox.Show("delete failed");
+                if (InsertUpdateDelete(mode) > 0)
+                {
+                    MessageBox.Show("Delete success");
+                }
+                else
+                {
+                    MessageBox.Show("delete failed");
+                }
+                btnCancel.PerformClick();
             }
         }
         private int InsertUpdateDelete(int mode)
@@ -138,6 +144,7 @@ namespace Nhóm1.TSon
             ClearText();
             tsiDeselect.PerformClick();
             mode = 0;
+            lvwCategory.Enabled = true;
         }
         private void ClearText()
         {

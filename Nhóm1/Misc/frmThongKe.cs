@@ -39,6 +39,7 @@ namespace Nhóm1
             LoadThongKe();
         }
 
+
         private void LoadThongKe()
         {
             if (cbxYear.SelectedValue == null) return;
@@ -68,12 +69,12 @@ namespace Nhóm1
 
             Series sExport = new Series("Doanh thu (Export)");
             sExport.ChartType = SeriesChartType.Area;
-            sExport.Color = System.Drawing.Color.FromArgb(100, 46, 204, 113);
+            sExport.Color = System.Drawing.Color.FromArgb(80, 46, 204, 113);
             sExport.BorderWidth = 2;
 
             Series sImport = new Series("Nhập hàng (Import)");
             sImport.ChartType = SeriesChartType.Area;
-            sImport.Color = System.Drawing.Color.FromArgb(100, 52, 152, 219);
+            sImport.Color = System.Drawing.Color.FromArgb(80, 52, 152, 219);
             sImport.BorderWidth = 2;
 
             decimal tongXuat = 0, tongNhap = 0;
@@ -105,14 +106,14 @@ namespace Nhóm1
                 conn.Open();
 
                 string queryTop = @"
-                SELECT TOP 5 i.Name AS [Sản phẩm], SUM(bd.Quantity) AS [Số lượng bán], N'Bán chạy' AS [Loại]
+                SELECT TOP 5 i.Name AS [Product Name], SUM(bd.Quantity) AS [Sold], N'Bán chạy' AS [Type]
                 FROM BillDetail bd
                 INNER JOIN Bill b ON bd.BillID = b.ID
                 INNER JOIN Item i ON bd.ItemID = i.ID
                 WHERE b.BillType = 'Export'
                 GROUP BY i.Name
                 UNION ALL
-                SELECT TOP 5 i.Name AS [Sản phẩm], SUM(bd.Quantity) AS [Số lượng bán], N'Nhập nhiều' AS [Loại]
+                SELECT TOP 5 i.Name AS [Product Name], SUM(bd.Quantity) AS [Sold], N'Nhập nhiều' AS [Loại]
                 FROM BillDetail bd
                 INNER JOIN Bill b ON bd.BillID = b.ID
                 INNER JOIN Item i ON bd.ItemID = i.ID

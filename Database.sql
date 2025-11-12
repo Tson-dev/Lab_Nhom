@@ -130,28 +130,28 @@ CREATE TABLE Item (
     CONSTRAINT FK_Item_Type FOREIGN KEY (TypeID) REFERENCES [Type](ID)
 );
 
-INSERT INTO Item (Name, Gender, Age, TypeID, Price, Stock, BrandID)
+INSERT INTO Item (Name, Gender, Age, Size, TypeID, Price, Stock, BrandID)
 VALUES
-(N'Nike Air Zoom', 2, '18', 5, 2500000, 15, 1),
-(N'Nike Pegasus 40', 2, '18', 5, 2900000, 20, 1),
-(N'Adidas UltraBoost', 2, '18', 5, 2800000, 18, 2),
-(N'Adidas Stan Smith', 1, '18', 2, 2200000, 20, 2),
-(N'Puma Runner', 0, 'u18', 2, 1500000, 25, 3),
-(N'Puma Smash V2', 1, 'u11', 2, 1200000, 30, 3),
-(N'Converse High', 0, 'u18', 2, 1300000, 40, 4),
-(N'Vans Old Skool', 0, 'u18', 2, 1600000, 35, 5),
-(N'Reebok Nano X', 2, '18', 5, 2500000, 20, 6),
-(N'New Balance 574', 0, '18', 2, 2300000, 18, 7),
-(N'Skechers Go Walk', 1, '18', 2, 2000000, 25, 8),
-(N'Under Armour HOVR', 2, '18', 5, 2700000, 12, 9),
-(N'Adidas High Heel', 1, '18', 4, 1800000, 15, 2),
-(N'Puma Elegant Step', 1, '18', 4, 2200000, 10, 3),
-(N'Nike Air Sandal', 0, '18', 1, 1100000, 30, 1),
-(N'Adidas Comfort Sandal', 0, 'u11', 1, 900000, 25, 2),
-(N'Converse Winter Boot', 0, 'u18', 3, 2000000, 20, 4),
-(N'Nike Trail Boot', 2, '18', 3, 3100000, 15, 1),
-(N'Reebok Classic Leather', 2, '18', 4, 2300000, 22, 6),
-(N'Vans Authentic Low', 0, 'u18', 4, 1550000, 28, 5);
+(N'Nike Air Zoom', 2, '18', 42, 5, 2500000, 15, 1),
+(N'Nike Pegasus 40', 2, '18', 16, 5, 2900000, 20, 1),
+(N'Adidas UltraBoost', 2, '18', 23, 5, 2800000, 18, 2),
+(N'Adidas Stan Smith', 1, '18',32, 2, 2200000, 20, 2),
+(N'Puma Runner', 0, 'u18', 2,27, 1500000, 25, 3),
+(N'Puma Smash V2', 1, 'u11',29, 2, 1200000, 30, 3),
+(N'Converse High', 0, 'u18',20, 2, 1300000, 40, 4),
+(N'Vans Old Skool', 0, 'u18',18, 2, 1600000, 35, 5),
+(N'Reebok Nano X', 2, '18',16, 5, 2500000, 20, 6),
+(N'New Balance 574', 0, '18',36, 2, 2300000, 18, 7),
+(N'Skechers Go Walk', 1, '18',35, 2, 2000000, 25, 8),
+(N'Under Armour HOVR', 2, '18',41, 5, 2700000, 12, 9),
+(N'Adidas High Heel', 1, '18',40, 4, 1800000, 15, 2),
+(N'Puma Elegant Step', 1, '18',30, 4, 2200000, 10, 3),
+(N'Nike Air Sandal', 0, '18',43, 1, 1100000, 30, 1),
+(N'Adidas Comfort Sandal', 0, 'u11',22, 1, 900000, 25, 2),
+(N'Converse Winter Boot', 0, 'u18',33, 3, 2000000, 20, 4),
+(N'Nike Trail Boot', 2, '18',24, 3, 3100000, 15, 1),
+(N'Reebok Classic Leather', 2, '18',25, 4, 2300000, 22, 6),
+(N'Vans Authentic Low', 0, 'u18',34, 4, 1550000, 28, 5);
 GO
 
 ----------------------------------------------------

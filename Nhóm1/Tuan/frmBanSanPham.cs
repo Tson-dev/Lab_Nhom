@@ -91,7 +91,7 @@ namespace Nhóm1
                 da.Fill(dt);
                 foreach (DataRow row in dt.Rows)
                 {
-                    clbKieu.Items.Add(row["TypeName"].ToString());
+                    clbKieu.Items.Add(row["Name"].ToString());
                 }
                 conn.Close();
             }
@@ -115,7 +115,7 @@ namespace Nhóm1
                 sp.Add(row.Cells["NameSP"].Value.ToString());   // sp[1]
                 sp.Add(row.Cells["Gender"].Value.ToString());   // sp[2]
                 sp.Add(row.Cells["Age"].Value.ToString());      // sp[3]
-                sp.Add(row.Cells["TypeName"].Value.ToString());     // sp[4]
+                sp.Add(row.Cells["Type"].Value.ToString());     // sp[4]
                 sp.Add(row.Cells["Price"].Value.ToString());    // sp[5]
                 sp.Add(row.Cells["Stock"].Value.ToString());    // sp[6]
                 sp.Add(row.Cells["BrandName"].Value.ToString());  // sp[7]

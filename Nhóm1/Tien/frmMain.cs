@@ -6,6 +6,7 @@ namespace Nhóm1
     public partial class frmMain : Form
     {
         public static string userRole;
+        private Form currnetFormChild;
         public frmMain()
         {
             InitializeComponent();
@@ -100,7 +101,6 @@ namespace Nhóm1
         {
             sidebarTransition.Start();
         }
-        private Form currnetFormChild;
         private void OpenChildForm(Form childForm)
         {
             if(currnetFormChild != null)

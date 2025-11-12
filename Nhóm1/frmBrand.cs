@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace Nhóm1
 {
@@ -9,8 +10,6 @@ namespace Nhóm1
     {
         private string Name_Cu = "";
         public string SelectedName { get; private set; }
-
-        string connectionString = Connection.ConnectionString;
 
         public frmBrand()
         {
@@ -28,7 +27,7 @@ namespace Nhóm1
             if (!string.IsNullOrEmpty(timkiem))
                 query += " WHERE Name LIKE @SearchTerm";
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 if (!string.IsNullOrEmpty(timkiem))
@@ -54,7 +53,7 @@ namespace Nhóm1
             }
 
             string query = "INSERT INTO Brand (Name, Phone, Email) VALUES (@Name, @Phone, @Email)";
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@Name", Name);
@@ -103,7 +102,7 @@ namespace Nhóm1
             }
 
             string query = "UPDATE Brand SET Name=@NameMoi, Phone=@Phone, Email=@Email WHERE Name=@NameCu";
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@NameCu", Name_Cu);
@@ -127,7 +126,7 @@ namespace Nhóm1
 
             if (MessageBox.Show("Bạn có chắc muốn xóa không?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = Connection.GetConnection())
                 using (SqlCommand cmd = new SqlCommand("DELETE FROM Brand WHERE Name=@Name", conn))
                 {
                     cmd.Parameters.AddWithValue("@Name", txtName.Text);

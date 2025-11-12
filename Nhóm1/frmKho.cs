@@ -5,13 +5,12 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace Nhóm1
 {
     public partial class frmKho : Form
-    {
-        private const string ConnectionString =
-            @"Data Source=NgocTuan\NgocTuan;Initial Catalog=ShoeShop;Integrated Security=True;";
+    {       
         private DataTable dtChiTietNhapTam;
 
         public frmKho()
@@ -54,7 +53,7 @@ namespace Nhóm1
                 INNER JOIN Brand b ON i.BrandID = b.ID
                 " + (string.IsNullOrEmpty(keyword) ? "" : "WHERE i.Name LIKE @Keyword OR b.Name LIKE @Keyword");
 
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 if (!string.IsNullOrEmpty(keyword))
@@ -69,7 +68,7 @@ namespace Nhóm1
         private void LoadNhaCungCap()
         {
             DataTable dt = new DataTable();
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             using (SqlCommand cmd = new SqlCommand("SELECT Name FROM Brand ORDER BY Name", conn))
             {
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -124,7 +123,7 @@ namespace Nhóm1
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 string query = @"
@@ -146,7 +145,7 @@ namespace Nhóm1
 
         private int GetBrandID(string brandName)
         {
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             using (SqlCommand cmd = new SqlCommand("SELECT ID FROM Brand WHERE Name=@Name", conn))
             {
                 cmd.Parameters.AddWithValue("@Name", brandName);
@@ -200,7 +199,7 @@ namespace Nhóm1
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 SqlTransaction transaction = conn.BeginTransaction();

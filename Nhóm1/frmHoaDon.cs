@@ -3,14 +3,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace Nhóm1
 {
     public partial class frmHoaDon : Form
     {
-        private readonly string connectionString =
-            @"Data Source=NgocTuan\NGOCTUAN;Initial Catalog=ShoeShop;Integrated Security=True";
-
         public frmHoaDon()
         {
             InitializeComponent();
@@ -54,7 +52,7 @@ namespace Nhóm1
         // ===========================
         private void LoadBillList()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 string query = @"
                     SELECT 
@@ -110,7 +108,7 @@ namespace Nhóm1
         // ===========================
         private void LoadBillDetail(int billID)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 string query = @"
                     SELECT 

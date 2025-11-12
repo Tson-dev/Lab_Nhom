@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace Nhóm1
 {
@@ -17,8 +18,6 @@ namespace Nhóm1
         {
             InitializeComponent();
         }
-
-        string connectionString = @"Data Source=NgocTuan\NGOCTUAN;Initial Catalog=ShoeShop;Integrated Security=True";
 
         List<string> sp = new List<string>();
         List<string> gioHang = new List<string>();
@@ -41,39 +40,61 @@ namespace Nhóm1
                             FROM Item AS i
                             INNER JOIN Brand AS b ON i.BrandID = b.ID";
 
-
         static string queryFName = basequery + " Where LOWER(Name) LIKE LOWER(@tenSP)";
-
         #endregion
 
-
         #region XuLyHam
-        private void Form7_Load(object sender, EventArgs e)
+        private void frmBanSanPham_Load(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            LoadDataSanPham();
+            LoadclbBrand();
+            LoadclbType();
+        }
+
+        public void LoadDataSanPham()
+        {
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(basequery, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dataDSSP.DataSource = dt;
+                conn.Close();
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        public void LoadclbBrand()
         {
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                clbBrand.Items.Clear();
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter("SELECT Name FROM Brand", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                clbBrand.DataSource = dt;
+                clbBrand.DisplayMember = "Name";
+                conn.Close();
+            }
+        }
 
-        }//Null
-
-        private void dataDSSP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void LoadclbType()
         {
-
-        }//Null
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }//Null
+            using (SqlConnection conn = Connection.GetConnection())
+            {
+                clbKieu.Items.Clear();
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT Type FROM Item", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                    clbKieu.Items.Add(row["Type"].ToString());
+                }
+                conn.Close();
+            }
+        }
 
         private void dataDSSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -96,7 +117,7 @@ namespace Nhóm1
                 sp.Add(row.Cells["Type"].Value.ToString());     // sp[4]
                 sp.Add(row.Cells["Price"].Value.ToString());    // sp[5]
                 sp.Add(row.Cells["Stock"].Value.ToString());    // sp[6]
-                sp.Add(row.Cells["BrandName"].Value.ToString());  // sp[07]
+                sp.Add(row.Cells["BrandName"].Value.ToString());  // sp[7]
 
 
                 if (!kiemTraTrung(sp[0]))
@@ -135,7 +156,7 @@ namespace Nhóm1
         {
             foreach (DataGridViewRow row in dgvGioHang.Rows)
             {
-                if (row.IsNewRow) continue; // bỏ qua dòng trống cuối
+                if (row.IsNewRow) continue;
 
                 if (row.Cells[0].Value == null || row.Cells[0].Value.ToString() == id)
                 {
@@ -150,26 +171,6 @@ namespace Nhóm1
             btnGioHang.PerformClick();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        } //Null
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }//Null
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }//Null
-
-        private void txtTenSP_TextChanged(object sender, EventArgs e)
-        {
-
-        }//Null
-
         private void btnTim_Click(object sender, EventArgs e)
         {
             string tenSP = txtTenSP.Text.Trim();
@@ -181,7 +182,7 @@ namespace Nhóm1
                 if (tenSP != "")
                 {
                     string tenHang = txtHang.Text.Trim();
-                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    using (SqlConnection conn = Connection.GetConnection())
                     {
                         conn.Open();
                         SqlDataAdapter da = new SqlDataAdapter(queryFName + qr, conn);
@@ -194,7 +195,7 @@ namespace Nhóm1
                 }
                 else if (qr == " Where")
                 {
-                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    using (SqlConnection conn = Connection.GetConnection())
                     {
                         conn.Open();
                         SqlDataAdapter da = new SqlDataAdapter(basequery, conn);
@@ -207,7 +208,7 @@ namespace Nhóm1
                 else
                 {
                     //MessageBox.Show("Vui lòng nhập tên sản phẩm, hoặc chọn các tiêu chí trong mục lọc để tìm kiểm sản phẩm", "Thông báo");
-                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    using (SqlConnection conn = Connection.GetConnection())
                     {
                         conn.Open();
                         SqlDataAdapter da = new SqlDataAdapter(basequery + qr, conn);
@@ -221,7 +222,7 @@ namespace Nhóm1
             else
             {
                 string tenHang = txtHang.Text.Trim();
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = Connection.GetConnection())
                 {
                     conn.Open();
                     SqlDataAdapter da = new SqlDataAdapter(queryFName, conn);
@@ -397,6 +398,11 @@ namespace Nhóm1
                 pnLoc.Visible = false;
                 btnLoc.Text = "Lọc";
             }
+            if(PNGioHang.Visible == true)
+            {
+                PNGioHang.Visible = false;
+                btnGioHang.Text = "Giỏ hàng";
+            }
         }
 
         private void btnGioHang_Click(object sender, EventArgs e)
@@ -411,13 +417,18 @@ namespace Nhóm1
                 PNGioHang.Visible = false;
                 btnGioHang.Text = "Giỏ hàng";
             }
+            if (pnLoc.Visible == true)
+            {
+                pnLoc.Visible = false;
+                btnLoc.Text = "Lọc";
+            }
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             ClearPNLoc();
             txtTenSP.Text = "";
-            Form7_Load(sender, e);
+            frmBanSanPham_Load(sender, e);
         }
 
         private void ClearPNLoc()
@@ -512,7 +523,6 @@ namespace Nhóm1
             }
         }
 
-        #endregion
         private void cmnDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này không?",
@@ -626,14 +636,14 @@ namespace Nhóm1
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 SqlTransaction tran = conn.BeginTransaction();
 
                 try
                 {
-                    // 1️⃣ Thêm hóa đơn mới (Bill)
+                    // Thêm hóa đơn mới (Bill)
                     string insertBill = @"
                 INSERT INTO Bill (AccountID, Date, Total)
                 OUTPUT INSERTED.ID
@@ -643,7 +653,7 @@ namespace Nhóm1
 
                     int newBillID = Convert.ToInt32(cmdBill.ExecuteScalar());
 
-                    // 2️⃣ Thêm các dòng chi tiết hóa đơn (BillDetail)
+                    // Thêm các dòng chi tiết hóa đơn (BillDetail)
                     decimal total = 0;
                     foreach (DataGridViewRow row in dgvGioHang.Rows)
                     {
@@ -665,7 +675,7 @@ namespace Nhóm1
 
                         total += quantity * price;
 
-                        // 3️⃣ Trừ tồn kho trong Items
+                        // Trừ tồn kho trong Items
                         string updateStock = @"UPDATE Item SET Stock = Stock - @qty WHERE ID = @item";
                         SqlCommand cmdStock = new SqlCommand(updateStock, conn, tran);
                         cmdStock.Parameters.AddWithValue("@qty", quantity);
@@ -673,24 +683,24 @@ namespace Nhóm1
                         cmdStock.ExecuteNonQuery();
                     }
 
-                    // 4️⃣ Cập nhật tổng tiền hóa đơn
+                    // Cập nhật tổng tiền hóa đơn
                     string updateTotal = @"UPDATE Bill SET Total = @total WHERE ID = @billID";
                     SqlCommand cmdTotal = new SqlCommand(updateTotal, conn, tran);
                     cmdTotal.Parameters.AddWithValue("@total", total);
                     cmdTotal.Parameters.AddWithValue("@billID", newBillID);
                     cmdTotal.ExecuteNonQuery();
 
-                    // 5️⃣ Commit transaction
+                    // Commit transaction
                     tran.Commit();
 
                     MessageBox.Show($"Thanh toán thành công!\nMã hóa đơn: {newBillID}\nTổng tiền: {total:N0} VNĐ",
                                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // 6️⃣ Xóa giỏ hàng sau khi thanh toán
+                    // Xóa giỏ hàng sau khi thanh toán
                     dgvGioHang.Rows.Clear();
                     lblTien.Text = "0 VNĐ";
 
-                    // 7️⃣ Hỏi có muốn in hóa đơn không
+                    // Hỏi có muốn in hóa đơn không
                     DialogResult print = MessageBox.Show("Bạn có muốn in hóa đơn ngay không?",
                                                          "In hóa đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (print == DialogResult.Yes)
@@ -711,5 +721,6 @@ namespace Nhóm1
                 }
             }
         }
+        #endregion
     }
 }

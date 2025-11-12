@@ -1,0 +1,95 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Nhóm1
+{
+    public partial class frmDangNhap : Form
+    {
+        public frmDangNhap()
+        {
+            InitializeComponent();
+            txtPassword.UseSystemPasswordChar = false;
+            txtPassword.PasswordChar = '*';
+
+            cbHienMk.CheckedChanged += cbHienMk_CheckedChanged;
+        }
+        private static readonly string connectionString = @"Data Source=NgocTuan\NgocTuan;Initial Catalog=ShoeShop;Integrated Security=True;";
+        private void lblThoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            if (username == "" || password == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!", "Thông báo");
+                return;
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = "SELECT a.Role, a.Active FROM Account as a WHERE Username=@user AND Password=@pass";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@user", username);
+                    cmd.Parameters.AddWithValue("@pass", password);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        bool active = Convert.ToBoolean(reader["Active"]);
+                        string role = reader["Role"].ToString();
+
+                        if (!active)
+                        {
+                            MessageBox.Show("Tài khoản này đã bị khóa!", "Cảnh báo");
+                            return;
+                        }
+
+                        MessageBox.Show($"Đăng nhập thành công! Tài khoản: {role}", "Thành công");
+
+                        frmTrangChu tt = new frmTrangChu(role);
+                        tt.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối: " + ex.Message);
+            }
+        }
+   
+        private void cbHienMk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbHienMk.Checked)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+            }
+        }
+    }
+}

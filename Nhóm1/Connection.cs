@@ -8,8 +8,8 @@ using System.Data;
 
 namespace Nhóm1
 {
-    public static class Connection
+    internal class Connection
     {
-        public static readonly string ConnectionString = "server = .\\UTFUSONSERVER; database = ShoeShop; Integrated Security = True;";
+        
     }
 }

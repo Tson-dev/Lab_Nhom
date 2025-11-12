@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace Nhóm1
 {
@@ -21,7 +22,7 @@ namespace Nhóm1
 
             cbHienMk.CheckedChanged += cbHienMk_CheckedChanged;
         }
-        private static readonly string connectionString = @"Data Source=NgocTuan\NgocTuan;Initial Catalog=ShoeShop;Integrated Security=True;";
+
         private void lblThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -40,7 +41,7 @@ namespace Nhóm1
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection conn = Connection.GetConnection())
                 {
                     conn.Open();
 

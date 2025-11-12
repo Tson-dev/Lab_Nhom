@@ -48,6 +48,7 @@
       <HintPath>..\packages\System.CodeDom.9.0.4\lib\net462\System.CodeDom.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -97,7 +98,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection.cs" />
     <Compile Include="frmBrand.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,17 +122,11 @@
     <Compile Include="frmNhanVien.Designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="TSon\frmCategory.cs">
+    <Compile Include="frmThongKe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TSon\frmCategory.Designer.cs">
-      <DependentUpon>frmCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TSon\frmStatictis.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TSon\frmStatictis.Designer.cs">
-      <DependentUpon>frmStatictis.cs</DependentUpon>
+    <Compile Include="frmThongKe.Designer.cs">
+      <DependentUpon>frmThongKe.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTrangChu.cs">
       <SubType>Form</SubType>
@@ -158,22 +152,16 @@
     <Compile Include="frmBanSanPham.Designer.cs">
       <DependentUpon>frmBanSanPham.cs</DependentUpon>
     </Compile>
-    <Compile Include="TSon\frmSanPham.cs">
+    <Compile Include="frmSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TSon\frmSanPham.Designer.cs">
+    <Compile Include="frmSanPham.Designer.cs">
       <DependentUpon>frmSanPham.cs</DependentUpon>
     </Compile>
     <Compile Include="Modify.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoan.cs" />
-    <Compile Include="trangchu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="trangchu.Designer.cs">
-      <DependentUpon>trangchu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tạo tài khoản.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +177,9 @@
     <EmbeddedResource Include="frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmThongKe.resx">
+      <DependentUpon>frmThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTrangChu.resx">
       <DependentUpon>frmTrangChu.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,10 +192,7 @@
     <EmbeddedResource Include="frmBanSanPham.resx">
       <DependentUpon>frmBanSanPham.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TSon\frmCategory.resx">
-      <DependentUpon>frmCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TSon\frmSanPham.resx">
+    <EmbeddedResource Include="frmSanPham.resx">
       <DependentUpon>frmSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -216,12 +204,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="trangchu.resx">
-      <DependentUpon>trangchu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TSon\frmStatictis.resx">
-      <DependentUpon>frmStatictis.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Tạo tài khoản.resx">
       <DependentUpon>Tạo tài khoản.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +220,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{fa53cd3c-e576-4ca1-adba-755f684fb3f2}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

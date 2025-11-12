@@ -164,20 +164,15 @@ namespace Nhóm1
             OpenChildForm(new FrmSanPham());
         }
 
-        private bool lblDanhSach_Click(object sender, EventArgs e, Form frm)
-        {
-            return true;
-        }
-
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmStatictis());
+            OpenChildForm(new frmThongKe());
         }
 
         private void btnCaiDat_Click(object sender, EventArgs e)
         {
             DialogResult rs =MessageBox.Show("Bạn chắc chắn muốn đăng xuất?","Đăng xuất",MessageBoxButtons.YesNo);
-            if (rs != DialogResult.No)
+            if (rs == DialogResult.No)
                 return;
             frmDangNhap form = new frmDangNhap();
             form.Show();

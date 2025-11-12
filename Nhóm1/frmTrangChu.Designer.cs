@@ -240,7 +240,7 @@
             this.btnNhapSanPham.Name = "btnNhapSanPham";
             this.btnNhapSanPham.Size = new System.Drawing.Size(267, 79);
             this.btnNhapSanPham.TabIndex = 3;
-            this.btnNhapSanPham.Text = "           Nhà kho";
+            this.btnNhapSanPham.Text = "Nhà kho";
             this.btnNhapSanPham.UseVisualStyleBackColor = false;
             this.btnNhapSanPham.Click += new System.EventHandler(this.btnNhapSanPham_Click);
             // 

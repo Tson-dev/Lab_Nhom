@@ -31,7 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProd));
             this.gbxInfo = new System.Windows.Forms.GroupBox();
-            this.cbNCC = new System.Windows.Forms.ComboBox();
+            this.cmsInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsInfo_tsiMore = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsInfo_Less = new System.Windows.Forms.ToolStripMenuItem();
+            this.rbtnUni = new System.Windows.Forms.RadioButton();
+            this.rbtnFemale = new System.Windows.Forms.RadioButton();
+            this.rbtnMale = new System.Windows.Forms.RadioButton();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.cbxBrand = new System.Windows.Forms.ComboBox();
             this.cmsBrand = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsBrand_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsBrand_tsiSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -44,14 +52,16 @@
             this.nudSize = new System.Windows.Forms.NumericUpDown();
             this.lblSize = new System.Windows.Forms.Label();
             this.pbxSize = new System.Windows.Forms.PictureBox();
-            this.cbLoai = new System.Windows.Forms.ComboBox();
-            this.cmsCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cbxType = new System.Windows.Forms.ComboBox();
+            this.cmsType = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsCategory_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsCategory_tsiSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.cmsCategory_tsiOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.lblLoai = new System.Windows.Forms.Label();
             this.pbxType = new System.Windows.Forms.PictureBox();
+            this.lblGender = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
+            this.pbxGender = new System.Windows.Forms.PictureBox();
             this.pbxAge = new System.Windows.Forms.PictureBox();
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -59,65 +69,56 @@
             this.pbxName = new System.Windows.Forms.PictureBox();
             this.lblProd = new System.Windows.Forms.Label();
             this.gbxFind = new System.Windows.Forms.GroupBox();
+            this.cmsFind = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsFind_tsiReset = new System.Windows.Forms.ToolStripMenuItem();
             this.rbtnType = new System.Windows.Forms.RadioButton();
             this.rbtnBrand = new System.Windows.Forms.RadioButton();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.lblFind = new System.Windows.Forms.Label();
             this.dgvProd = new System.Windows.Forms.DataGridView();
+            this.cms_dgvProd = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cms_dgvProd_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_dgvProd_tsiUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_dgvProd_tsiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_dgvProd_Separator = new System.Windows.Forms.ToolStripSeparator();
+            this.cms_dgvProd_tsiReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_dgvProd_tsiDeselect = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFind = new System.Windows.Forms.Button();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnFind = new System.Windows.Forms.Button();
-            this.cmsInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsFind = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cms_dgvProd = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cms_dgvProd_Update = new System.Windows.Forms.ToolStripMenuItem();
-            this.cms_dgvProd_tsiDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.cms_dgvProd_Separator = new System.Windows.Forms.ToolStripSeparator();
-            this.cms_dgvProd_tsiReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsInfo_tsiMore = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsInfo_Less = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsFind_tsiReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.cms_dgvProd_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnConfirm = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.rbtnMale = new System.Windows.Forms.RadioButton();
-            this.rbtnFemale = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.gbxInfo.SuspendLayout();
+            this.cmsInfo.SuspendLayout();
             this.cmsBrand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBrand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSize)).BeginInit();
-            this.cmsCategory.SuspendLayout();
+            this.cmsType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxGender)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxName)).BeginInit();
             this.gbxFind.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).BeginInit();
-            this.cmsInfo.SuspendLayout();
             this.cmsFind.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).BeginInit();
             this.cms_dgvProd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxInfo
             // 
-            this.gbxInfo.ContextMenuStrip = this.cmsInfo;
-            this.gbxInfo.Controls.Add(this.radioButton1);
+            this.gbxInfo.Controls.Add(this.rbtnUni);
             this.gbxInfo.Controls.Add(this.rbtnFemale);
             this.gbxInfo.Controls.Add(this.rbtnMale);
             this.gbxInfo.Controls.Add(this.btnCancel);
             this.gbxInfo.Controls.Add(this.btnConfirm);
-            this.gbxInfo.Controls.Add(this.cbNCC);
+            this.gbxInfo.Controls.Add(this.cbxBrand);
             this.gbxInfo.Controls.Add(this.lblBrand);
             this.gbxInfo.Controls.Add(this.pbxBrand);
             this.gbxInfo.Controls.Add(this.txtPrice);
@@ -126,12 +127,12 @@
             this.gbxInfo.Controls.Add(this.nudSize);
             this.gbxInfo.Controls.Add(this.lblSize);
             this.gbxInfo.Controls.Add(this.pbxSize);
-            this.gbxInfo.Controls.Add(this.cbLoai);
+            this.gbxInfo.Controls.Add(this.cbxType);
             this.gbxInfo.Controls.Add(this.lblLoai);
             this.gbxInfo.Controls.Add(this.pbxType);
-            this.gbxInfo.Controls.Add(this.label1);
+            this.gbxInfo.Controls.Add(this.lblGender);
             this.gbxInfo.Controls.Add(this.lblAge);
-            this.gbxInfo.Controls.Add(this.pictureBox1);
+            this.gbxInfo.Controls.Add(this.pbxGender);
             this.gbxInfo.Controls.Add(this.pbxAge);
             this.gbxInfo.Controls.Add(this.txtAge);
             this.gbxInfo.Controls.Add(this.txtName);
@@ -145,14 +146,97 @@
             this.gbxInfo.TabStop = false;
             this.gbxInfo.Text = "Information";
             // 
-            // cbNCC
+            // cmsInfo
             // 
-            this.cbNCC.ContextMenuStrip = this.cmsBrand;
-            this.cbNCC.FormattingEnabled = true;
-            this.cbNCC.Location = new System.Drawing.Point(132, 385);
-            this.cbNCC.Name = "cbNCC";
-            this.cbNCC.Size = new System.Drawing.Size(282, 28);
-            this.cbNCC.TabIndex = 49;
+            this.cmsInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsInfo_tsiMore,
+            this.cmsInfo_Less});
+            this.cmsInfo.Name = "contextMenuStrip1";
+            this.cmsInfo.Size = new System.Drawing.Size(127, 48);
+            // 
+            // cmsInfo_tsiMore
+            // 
+            this.cmsInfo_tsiMore.Name = "cmsInfo_tsiMore";
+            this.cmsInfo_tsiMore.Size = new System.Drawing.Size(126, 22);
+            this.cmsInfo_tsiMore.Text = "More info";
+            this.cmsInfo_tsiMore.Click += new System.EventHandler(this.cmsInfo_tsiMore_Click);
+            // 
+            // cmsInfo_Less
+            // 
+            this.cmsInfo_Less.Name = "cmsInfo_Less";
+            this.cmsInfo_Less.Size = new System.Drawing.Size(126, 22);
+            this.cmsInfo_Less.Text = "Less info";
+            this.cmsInfo_Less.Click += new System.EventHandler(this.cmsInfo_Less_Click);
+            // 
+            // rbtnUni
+            // 
+            this.rbtnUni.AutoSize = true;
+            this.rbtnUni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnUni.Location = new System.Drawing.Point(306, 93);
+            this.rbtnUni.Name = "rbtnUni";
+            this.rbtnUni.Size = new System.Drawing.Size(75, 24);
+            this.rbtnUni.TabIndex = 3;
+            this.rbtnUni.TabStop = true;
+            this.rbtnUni.Text = "Unisex";
+            this.rbtnUni.UseVisualStyleBackColor = true;
+            // 
+            // rbtnFemale
+            // 
+            this.rbtnFemale.AutoSize = true;
+            this.rbtnFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnFemale.Location = new System.Drawing.Point(210, 93);
+            this.rbtnFemale.Name = "rbtnFemale";
+            this.rbtnFemale.Size = new System.Drawing.Size(80, 24);
+            this.rbtnFemale.TabIndex = 2;
+            this.rbtnFemale.TabStop = true;
+            this.rbtnFemale.Text = "Female";
+            this.rbtnFemale.UseVisualStyleBackColor = true;
+            // 
+            // rbtnMale
+            // 
+            this.rbtnMale.AutoSize = true;
+            this.rbtnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnMale.Location = new System.Drawing.Point(132, 93);
+            this.rbtnMale.Name = "rbtnMale";
+            this.rbtnMale.Size = new System.Drawing.Size(61, 24);
+            this.rbtnMale.TabIndex = 1;
+            this.rbtnMale.TabStop = true;
+            this.rbtnMale.Text = "Male";
+            this.rbtnMale.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(316, 449);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(98, 33);
+            this.btnCancel.TabIndex = 10;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.Location = new System.Drawing.Point(199, 449);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(98, 33);
+            this.btnConfirm.TabIndex = 9;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // cbxBrand
+            // 
+            this.cbxBrand.ContextMenuStrip = this.cmsBrand;
+            this.cbxBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxBrand.FormattingEnabled = true;
+            this.cbxBrand.Location = new System.Drawing.Point(132, 385);
+            this.cbxBrand.Name = "cbxBrand";
+            this.cbxBrand.Size = new System.Drawing.Size(282, 28);
+            this.cbxBrand.TabIndex = 8;
             // 
             // cmsBrand
             // 
@@ -210,7 +294,8 @@
             this.txtPrice.Location = new System.Drawing.Point(132, 323);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(282, 26);
-            this.txtPrice.TabIndex = 46;
+            this.txtPrice.TabIndex = 7;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNumber);
             // 
             // lblGiaBan
             // 
@@ -236,18 +321,18 @@
             // 
             this.nudSize.Location = new System.Drawing.Point(132, 260);
             this.nudSize.Maximum = new decimal(new int[] {
-            45,
+            49,
             0,
             0,
             0});
             this.nudSize.Minimum = new decimal(new int[] {
-            35,
+            15,
             0,
             0,
             0});
             this.nudSize.Name = "nudSize";
             this.nudSize.Size = new System.Drawing.Size(149, 26);
-            this.nudSize.TabIndex = 40;
+            this.nudSize.TabIndex = 6;
             this.nudSize.Value = new decimal(new int[] {
             35,
             0,
@@ -274,42 +359,46 @@
             this.pbxSize.TabIndex = 38;
             this.pbxSize.TabStop = false;
             // 
-            // cbLoai
+            // cbxType
             // 
-            this.cbLoai.ContextMenuStrip = this.cmsCategory;
-            this.cbLoai.FormattingEnabled = true;
-            this.cbLoai.Location = new System.Drawing.Point(132, 201);
-            this.cbLoai.Name = "cbLoai";
-            this.cbLoai.Size = new System.Drawing.Size(282, 28);
-            this.cbLoai.TabIndex = 37;
+            this.cbxType.ContextMenuStrip = this.cmsType;
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Location = new System.Drawing.Point(132, 201);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(282, 28);
+            this.cbxType.TabIndex = 5;
             // 
-            // cmsCategory
+            // cmsType
             // 
-            this.cmsCategory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsType.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmsCategory_tsiAdd,
             this.cmsCategory_tsiSeparator,
             this.cmsCategory_tsiOpen});
-            this.cmsCategory.Name = "cmsCategory";
-            this.cmsCategory.Size = new System.Drawing.Size(155, 54);
+            this.cmsType.Name = "cmsCategory";
+            this.cmsType.Size = new System.Drawing.Size(132, 54);
             // 
             // cmsCategory_tsiAdd
             // 
+            this.cmsCategory_tsiAdd.Enabled = false;
             this.cmsCategory_tsiAdd.Name = "cmsCategory_tsiAdd";
-            this.cmsCategory_tsiAdd.Size = new System.Drawing.Size(154, 22);
+            this.cmsCategory_tsiAdd.Size = new System.Drawing.Size(131, 22);
             this.cmsCategory_tsiAdd.Text = "Add";
-            this.cmsCategory_tsiAdd.Click += new System.EventHandler(this.cmsCategory_tsiAdd_Click);
+            this.cmsCategory_tsiAdd.Visible = false;
+            this.cmsCategory_tsiAdd.Click += new System.EventHandler(this.cmsType_tsiAdd_Click);
             // 
             // cmsCategory_tsiSeparator
             // 
             this.cmsCategory_tsiSeparator.Name = "cmsCategory_tsiSeparator";
-            this.cmsCategory_tsiSeparator.Size = new System.Drawing.Size(151, 6);
+            this.cmsCategory_tsiSeparator.Size = new System.Drawing.Size(128, 6);
+            this.cmsCategory_tsiSeparator.Visible = false;
             // 
             // cmsCategory_tsiOpen
             // 
             this.cmsCategory_tsiOpen.Name = "cmsCategory_tsiOpen";
-            this.cmsCategory_tsiOpen.Size = new System.Drawing.Size(154, 22);
-            this.cmsCategory_tsiOpen.Text = "Open Category";
-            this.cmsCategory_tsiOpen.Click += new System.EventHandler(this.cmsCategory_tsiOpen_Click);
+            this.cmsCategory_tsiOpen.Size = new System.Drawing.Size(131, 22);
+            this.cmsCategory_tsiOpen.Text = "Open Type";
+            this.cmsCategory_tsiOpen.Click += new System.EventHandler(this.cmsType_tsiOpen_Click);
             // 
             // lblLoai
             // 
@@ -331,6 +420,16 @@
             this.pbxType.TabIndex = 35;
             this.pbxType.TabStop = false;
             // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.Location = new System.Drawing.Point(54, 91);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(63, 20);
+            this.lblGender.TabIndex = 33;
+            this.lblGender.Text = "Gender";
+            // 
             // lblAge
             // 
             this.lblAge.AutoSize = true;
@@ -340,6 +439,16 @@
             this.lblAge.Size = new System.Drawing.Size(38, 20);
             this.lblAge.TabIndex = 33;
             this.lblAge.Text = "Age";
+            // 
+            // pbxGender
+            // 
+            this.pbxGender.Image = ((System.Drawing.Image)(resources.GetObject("pbxGender.Image")));
+            this.pbxGender.Location = new System.Drawing.Point(6, 81);
+            this.pbxGender.Name = "pbxGender";
+            this.pbxGender.Size = new System.Drawing.Size(39, 40);
+            this.pbxGender.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxGender.TabIndex = 32;
+            this.pbxGender.TabStop = false;
             // 
             // pbxAge
             // 
@@ -356,14 +465,14 @@
             this.txtAge.Location = new System.Drawing.Point(132, 143);
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(282, 26);
-            this.txtAge.TabIndex = 22;
+            this.txtAge.TabIndex = 4;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(132, 40);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(282, 26);
-            this.txtName.TabIndex = 22;
+            this.txtName.TabIndex = 0;
             // 
             // lblName
             // 
@@ -412,6 +521,20 @@
             this.gbxFind.TabStop = false;
             this.gbxFind.Text = "Find";
             // 
+            // cmsFind
+            // 
+            this.cmsFind.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsFind_tsiReset});
+            this.cmsFind.Name = "contextMenuStrip2";
+            this.cmsFind.Size = new System.Drawing.Size(103, 26);
+            // 
+            // cmsFind_tsiReset
+            // 
+            this.cmsFind_tsiReset.Name = "cmsFind_tsiReset";
+            this.cmsFind_tsiReset.Size = new System.Drawing.Size(102, 22);
+            this.cmsFind_tsiReset.Text = "Reset";
+            this.cmsFind_tsiReset.Click += new System.EventHandler(this.cmsFind_tsiReset_Click);
+            // 
             // rbtnType
             // 
             this.rbtnType.AutoSize = true;
@@ -419,7 +542,7 @@
             this.rbtnType.Location = new System.Drawing.Point(184, 81);
             this.rbtnType.Name = "rbtnType";
             this.rbtnType.Size = new System.Drawing.Size(61, 24);
-            this.rbtnType.TabIndex = 62;
+            this.rbtnType.TabIndex = 2;
             this.rbtnType.Text = "Type";
             this.rbtnType.UseVisualStyleBackColor = true;
             // 
@@ -431,7 +554,7 @@
             this.rbtnBrand.Location = new System.Drawing.Point(68, 81);
             this.rbtnBrand.Name = "rbtnBrand";
             this.rbtnBrand.Size = new System.Drawing.Size(92, 24);
-            this.rbtnBrand.TabIndex = 61;
+            this.rbtnBrand.TabIndex = 1;
             this.rbtnBrand.TabStop = true;
             this.rbtnBrand.Text = "By Brand";
             this.rbtnBrand.UseVisualStyleBackColor = true;
@@ -441,7 +564,9 @@
             this.txtFind.Location = new System.Drawing.Point(68, 40);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(268, 26);
-            this.txtFind.TabIndex = 60;
+            this.txtFind.TabIndex = 0;
+            this.txtFind.Enter += new System.EventHandler(this.txtFind_Enter);
+            this.txtFind.Leave += new System.EventHandler(this.txtFind_Leave);
             // 
             // lblFind
             // 
@@ -460,6 +585,7 @@
             this.colID,
             this.ColName,
             this.colBrand,
+            this.colGender,
             this.ColType,
             this.colSize,
             this.colAge,
@@ -467,73 +593,67 @@
             this.colPrice});
             this.dgvProd.ContextMenuStrip = this.cms_dgvProd;
             this.dgvProd.Location = new System.Drawing.Point(6, 117);
+            this.dgvProd.MultiSelect = false;
             this.dgvProd.Name = "dgvProd";
+            this.dgvProd.ReadOnly = true;
             this.dgvProd.RowHeadersWidth = 51;
+            this.dgvProd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProd.Size = new System.Drawing.Size(518, 398);
-            this.dgvProd.TabIndex = 58;
-            this.dgvProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProd_CellContentClick);
+            this.dgvProd.TabIndex = 4;
+            this.dgvProd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProd_CellClick);
+            this.dgvProd.SelectionChanged += new System.EventHandler(this.dgvProd_SelectionChanged);
             // 
-            // colID
+            // cms_dgvProd
             // 
-            this.colID.DataPropertyName = "ID";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
+            this.cms_dgvProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cms_dgvProd_tsiAdd,
+            this.cms_dgvProd_tsiUpdate,
+            this.cms_dgvProd_tsiDelete,
+            this.cms_dgvProd_Separator,
+            this.cms_dgvProd_tsiReset,
+            this.cms_dgvProd_tsiDeselect});
+            this.cms_dgvProd.Name = "cms_dgvProd";
+            this.cms_dgvProd.Size = new System.Drawing.Size(119, 120);
             // 
-            // ColName
+            // cms_dgvProd_tsiAdd
             // 
-            this.ColName.DataPropertyName = "Name";
-            this.ColName.HeaderText = "Prod Name";
-            this.ColName.MinimumWidth = 6;
-            this.ColName.Name = "ColName";
-            this.ColName.Width = 125;
+            this.cms_dgvProd_tsiAdd.Name = "cms_dgvProd_tsiAdd";
+            this.cms_dgvProd_tsiAdd.Size = new System.Drawing.Size(180, 22);
+            this.cms_dgvProd_tsiAdd.Text = "Add";
+            this.cms_dgvProd_tsiAdd.Click += new System.EventHandler(this.cms_dgvProd_tsiAdd_Click);
             // 
-            // colBrand
+            // cms_dgvProd_tsiUpdate
             // 
-            this.colBrand.DataPropertyName = "BrandName";
-            this.colBrand.HeaderText = "Brand Name";
-            this.colBrand.MinimumWidth = 6;
-            this.colBrand.Name = "colBrand";
-            this.colBrand.Width = 125;
+            this.cms_dgvProd_tsiUpdate.Name = "cms_dgvProd_tsiUpdate";
+            this.cms_dgvProd_tsiUpdate.Size = new System.Drawing.Size(180, 22);
+            this.cms_dgvProd_tsiUpdate.Text = "Update";
+            this.cms_dgvProd_tsiUpdate.Click += new System.EventHandler(this.cms_dgvProd_Update_Click);
             // 
-            // ColType
+            // cms_dgvProd_tsiDelete
             // 
-            this.ColType.DataPropertyName = "Type";
-            this.ColType.HeaderText = "Type";
-            this.ColType.MinimumWidth = 6;
-            this.ColType.Name = "ColType";
-            this.ColType.Width = 125;
+            this.cms_dgvProd_tsiDelete.Name = "cms_dgvProd_tsiDelete";
+            this.cms_dgvProd_tsiDelete.Size = new System.Drawing.Size(180, 22);
+            this.cms_dgvProd_tsiDelete.Text = "Delete";
+            this.cms_dgvProd_tsiDelete.Click += new System.EventHandler(this.cms_dgvProd_tsiDelete_Click);
             // 
-            // colSize
+            // cms_dgvProd_Separator
             // 
-            this.colSize.DataPropertyName = "Size";
-            this.colSize.HeaderText = "Size";
-            this.colSize.MinimumWidth = 6;
-            this.colSize.Name = "colSize";
-            this.colSize.Width = 125;
+            this.cms_dgvProd_Separator.Name = "cms_dgvProd_Separator";
+            this.cms_dgvProd_Separator.Size = new System.Drawing.Size(177, 6);
             // 
-            // colAge
+            // cms_dgvProd_tsiReset
             // 
-            this.colAge.DataPropertyName = "Age";
-            this.colAge.HeaderText = "Age";
-            this.colAge.MinimumWidth = 6;
-            this.colAge.Name = "colAge";
-            this.colAge.Width = 125;
+            this.cms_dgvProd_tsiReset.Name = "cms_dgvProd_tsiReset";
+            this.cms_dgvProd_tsiReset.Size = new System.Drawing.Size(180, 22);
+            this.cms_dgvProd_tsiReset.Text = "Reset";
+            this.cms_dgvProd_tsiReset.Click += new System.EventHandler(this.cms_dgvProd_tsiReset_Click);
             // 
-            // colStock
+            // cms_dgvProd_tsiDeselect
             // 
-            this.colStock.DataPropertyName = "Stock";
-            this.colStock.HeaderText = "Stock";
-            this.colStock.MinimumWidth = 6;
-            this.colStock.Name = "colStock";
-            this.colStock.Width = 125;
-            // 
-            // colPrice
-            // 
-            this.colPrice.DataPropertyName = "Price";
-            this.colPrice.HeaderText = "Price";
-            this.colPrice.MinimumWidth = 6;
-            this.colPrice.Name = "colPrice";
-            this.colPrice.Width = 125;
+            this.cms_dgvProd_tsiDeselect.Name = "cms_dgvProd_tsiDeselect";
+            this.cms_dgvProd_tsiDeselect.Size = new System.Drawing.Size(180, 22);
+            this.cms_dgvProd_tsiDeselect.Text = "Deselect";
+            this.cms_dgvProd_tsiDeselect.Click += new System.EventHandler(this.cms_dgvProd_tsiDeselect_Click);
             // 
             // btnFind
             // 
@@ -542,163 +662,87 @@
             this.btnFind.Location = new System.Drawing.Point(396, 38);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(98, 33);
-            this.btnFind.TabIndex = 56;
+            this.btnFind.TabIndex = 3;
             this.btnFind.Text = "Find";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
-            // cmsInfo
+            // colID
             // 
-            this.cmsInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsInfo_tsiMore,
-            this.cmsInfo_Less});
-            this.cmsInfo.Name = "contextMenuStrip1";
-            this.cmsInfo.Size = new System.Drawing.Size(127, 48);
+            this.colID.DataPropertyName = "ID";
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
             // 
-            // cmsFind
+            // ColName
             // 
-            this.cmsFind.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsFind_tsiReset});
-            this.cmsFind.Name = "contextMenuStrip2";
-            this.cmsFind.Size = new System.Drawing.Size(103, 26);
+            this.ColName.DataPropertyName = "Name";
+            this.ColName.HeaderText = "Prod Name";
+            this.ColName.MinimumWidth = 6;
+            this.ColName.Name = "ColName";
+            this.ColName.ReadOnly = true;
+            this.ColName.Width = 125;
             // 
-            // cms_dgvProd
+            // colBrand
             // 
-            this.cms_dgvProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cms_dgvProd_tsiAdd,
-            this.cms_dgvProd_Update,
-            this.cms_dgvProd_tsiDelete,
-            this.cms_dgvProd_Separator,
-            this.cms_dgvProd_tsiReset});
-            this.cms_dgvProd.Name = "cms_dgvProd";
-            this.cms_dgvProd.Size = new System.Drawing.Size(113, 98);
+            this.colBrand.DataPropertyName = "BrandName";
+            this.colBrand.HeaderText = "Brand Name";
+            this.colBrand.MinimumWidth = 6;
+            this.colBrand.Name = "colBrand";
+            this.colBrand.ReadOnly = true;
+            this.colBrand.Width = 125;
             // 
-            // cms_dgvProd_Update
+            // colGender
             // 
-            this.cms_dgvProd_Update.Name = "cms_dgvProd_Update";
-            this.cms_dgvProd_Update.Size = new System.Drawing.Size(112, 22);
-            this.cms_dgvProd_Update.Text = "Update";
+            this.colGender.DataPropertyName = "Gender";
+            this.colGender.HeaderText = "Gender";
+            this.colGender.Name = "colGender";
+            this.colGender.ReadOnly = true;
             // 
-            // cms_dgvProd_tsiDelete
+            // ColType
             // 
-            this.cms_dgvProd_tsiDelete.Name = "cms_dgvProd_tsiDelete";
-            this.cms_dgvProd_tsiDelete.Size = new System.Drawing.Size(112, 22);
-            this.cms_dgvProd_tsiDelete.Text = "Delete";
+            this.ColType.DataPropertyName = "TypeName";
+            this.ColType.HeaderText = "Type Name";
+            this.ColType.MinimumWidth = 6;
+            this.ColType.Name = "ColType";
+            this.ColType.ReadOnly = true;
+            this.ColType.Width = 125;
             // 
-            // cms_dgvProd_Separator
+            // colSize
             // 
-            this.cms_dgvProd_Separator.Name = "cms_dgvProd_Separator";
-            this.cms_dgvProd_Separator.Size = new System.Drawing.Size(109, 6);
+            this.colSize.DataPropertyName = "Size";
+            this.colSize.HeaderText = "Size";
+            this.colSize.MinimumWidth = 6;
+            this.colSize.Name = "colSize";
+            this.colSize.ReadOnly = true;
+            this.colSize.Width = 125;
             // 
-            // cms_dgvProd_tsiReset
+            // colAge
             // 
-            this.cms_dgvProd_tsiReset.Name = "cms_dgvProd_tsiReset";
-            this.cms_dgvProd_tsiReset.Size = new System.Drawing.Size(112, 22);
-            this.cms_dgvProd_tsiReset.Text = "Reset";
+            this.colAge.DataPropertyName = "Age";
+            this.colAge.HeaderText = "Age";
+            this.colAge.MinimumWidth = 6;
+            this.colAge.Name = "colAge";
+            this.colAge.ReadOnly = true;
+            this.colAge.Width = 125;
             // 
-            // cmsInfo_tsiMore
+            // colStock
             // 
-            this.cmsInfo_tsiMore.Name = "cmsInfo_tsiMore";
-            this.cmsInfo_tsiMore.Size = new System.Drawing.Size(126, 22);
-            this.cmsInfo_tsiMore.Text = "More info";
+            this.colStock.DataPropertyName = "Stock";
+            this.colStock.HeaderText = "Stock";
+            this.colStock.MinimumWidth = 6;
+            this.colStock.Name = "colStock";
+            this.colStock.ReadOnly = true;
+            this.colStock.Width = 125;
             // 
-            // cmsInfo_Less
+            // colPrice
             // 
-            this.cmsInfo_Less.Name = "cmsInfo_Less";
-            this.cmsInfo_Less.Size = new System.Drawing.Size(126, 22);
-            this.cmsInfo_Less.Text = "Less info";
-            // 
-            // cmsFind_tsiReset
-            // 
-            this.cmsFind_tsiReset.Name = "cmsFind_tsiReset";
-            this.cmsFind_tsiReset.Size = new System.Drawing.Size(102, 22);
-            this.cmsFind_tsiReset.Text = "Reset";
-            // 
-            // cms_dgvProd_tsiAdd
-            // 
-            this.cms_dgvProd_tsiAdd.Name = "cms_dgvProd_tsiAdd";
-            this.cms_dgvProd_tsiAdd.Size = new System.Drawing.Size(112, 22);
-            this.cms_dgvProd_tsiAdd.Text = "Add";
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(199, 449);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(98, 33);
-            this.btnConfirm.TabIndex = 53;
-            this.btnConfirm.Text = "Confirm";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 81);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 91);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 20);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Age";
-            // 
-            // rbtnMale
-            // 
-            this.rbtnMale.AutoSize = true;
-            this.rbtnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnMale.Location = new System.Drawing.Point(132, 93);
-            this.rbtnMale.Name = "rbtnMale";
-            this.rbtnMale.Size = new System.Drawing.Size(61, 24);
-            this.rbtnMale.TabIndex = 54;
-            this.rbtnMale.TabStop = true;
-            this.rbtnMale.Text = "Male";
-            this.rbtnMale.UseVisualStyleBackColor = true;
-            // 
-            // rbtnFemale
-            // 
-            this.rbtnFemale.AutoSize = true;
-            this.rbtnFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtnFemale.Location = new System.Drawing.Point(210, 93);
-            this.rbtnFemale.Name = "rbtnFemale";
-            this.rbtnFemale.Size = new System.Drawing.Size(80, 24);
-            this.rbtnFemale.TabIndex = 54;
-            this.rbtnFemale.TabStop = true;
-            this.rbtnFemale.Text = "Female";
-            this.rbtnFemale.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(306, 93);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(75, 24);
-            this.radioButton1.TabIndex = 54;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Unisex";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(316, 449);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(98, 33);
-            this.btnCancel.TabIndex = 53;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.colPrice.DataPropertyName = "Price";
+            this.colPrice.HeaderText = "Price";
+            this.colPrice.MinimumWidth = 6;
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            this.colPrice.Width = 125;
             // 
             // frmProd
             // 
@@ -713,22 +757,22 @@
             this.Load += new System.EventHandler(this.frmProduct_Load);
             this.gbxInfo.ResumeLayout(false);
             this.gbxInfo.PerformLayout();
+            this.cmsInfo.ResumeLayout(false);
             this.cmsBrand.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxBrand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSize)).EndInit();
-            this.cmsCategory.ResumeLayout(false);
+            this.cmsType.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxGender)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxName)).EndInit();
             this.gbxFind.ResumeLayout(false);
             this.gbxFind.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).EndInit();
-            this.cmsInfo.ResumeLayout(false);
             this.cmsFind.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).EndInit();
             this.cms_dgvProd.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -745,14 +789,14 @@
         private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.PictureBox pbxSize;
-        private System.Windows.Forms.ComboBox cbLoai;
+        private System.Windows.Forms.ComboBox cbxType;
         private System.Windows.Forms.Label lblLoai;
         private System.Windows.Forms.PictureBox pbxType;
         private System.Windows.Forms.NumericUpDown nudSize;
         private System.Windows.Forms.PictureBox pbxPrice;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label lblGiaBan;
-        private System.Windows.Forms.ComboBox cbNCC;
+        private System.Windows.Forms.ComboBox cbxBrand;
         private System.Windows.Forms.Label lblBrand;
         private System.Windows.Forms.PictureBox pbxBrand;
         private System.Windows.Forms.GroupBox gbxFind;
@@ -766,36 +810,38 @@
         private System.Windows.Forms.ToolStripMenuItem cmsBrand_tsiAdd;
         private System.Windows.Forms.ToolStripSeparator cmsBrand_tsiSeparator;
         private System.Windows.Forms.ToolStripMenuItem cmsBrand_tsiOpen;
-        private System.Windows.Forms.ContextMenuStrip cmsCategory;
+        private System.Windows.Forms.ContextMenuStrip cmsType;
         private System.Windows.Forms.ToolStripMenuItem cmsCategory_tsiAdd;
         private System.Windows.Forms.ToolStripSeparator cmsCategory_tsiSeparator;
         private System.Windows.Forms.ToolStripMenuItem cmsCategory_tsiOpen;
         private System.Windows.Forms.TextBox txtAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colBrand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAge;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.ContextMenuStrip cmsInfo;
         private System.Windows.Forms.ContextMenuStrip cmsFind;
         private System.Windows.Forms.ToolStripMenuItem cmsInfo_tsiMore;
         private System.Windows.Forms.ToolStripMenuItem cmsInfo_Less;
         private System.Windows.Forms.ToolStripMenuItem cmsFind_tsiReset;
         private System.Windows.Forms.ContextMenuStrip cms_dgvProd;
-        private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_Update;
+        private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiUpdate;
         private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiDelete;
         private System.Windows.Forms.ToolStripSeparator cms_dgvProd_Separator;
         private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiReset;
         private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiAdd;
         private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxGender;
         private System.Windows.Forms.RadioButton rbtnFemale;
         private System.Windows.Forms.RadioButton rbtnMale;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label lblGender;
+        private System.Windows.Forms.RadioButton rbtnUni;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiDeselect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
     }
 }

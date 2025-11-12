@@ -122,11 +122,11 @@
     <Compile Include="frmNhanVien.Designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="TSon\frmCategory.cs">
+    <Compile Include="TSon\frmType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TSon\frmCategory.Designer.cs">
-      <DependentUpon>frmCategory.cs</DependentUpon>
+    <Compile Include="TSon\frmType.Designer.cs">
+      <DependentUpon>frmType.cs</DependentUpon>
     </Compile>
     <Compile Include="TSon\frmStatictis.cs">
       <SubType>Form</SubType>
@@ -158,11 +158,11 @@
     <Compile Include="frmBanSanPham.Designer.cs">
       <DependentUpon>frmBanSanPham.cs</DependentUpon>
     </Compile>
-    <Compile Include="TSon\frmSanPham.cs">
+    <Compile Include="TSon\frmProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TSon\frmSanPham.Designer.cs">
-      <DependentUpon>frmSanPham.cs</DependentUpon>
+    <Compile Include="TSon\frmProduct.Designer.cs">
+      <DependentUpon>frmProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Modify.cs" />
     <Compile Include="Program.cs" />
@@ -201,11 +201,11 @@
     <EmbeddedResource Include="frmBanSanPham.resx">
       <DependentUpon>frmBanSanPham.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TSon\frmCategory.resx">
-      <DependentUpon>frmCategory.cs</DependentUpon>
+    <EmbeddedResource Include="TSon\frmType.resx">
+      <DependentUpon>frmType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TSon\frmSanPham.resx">
-      <DependentUpon>frmSanPham.cs</DependentUpon>
+    <EmbeddedResource Include="TSon\frmProduct.resx">
+      <DependentUpon>frmProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

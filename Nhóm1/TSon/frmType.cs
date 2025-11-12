@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Nhóm1.TSon
 {
-    public partial class frmCategory : Form
+    public partial class frmType : Form
     {
-        public frmCategory()
+        public frmType()
         {
             InitializeComponent();
         }

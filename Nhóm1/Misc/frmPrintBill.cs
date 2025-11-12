@@ -13,30 +13,27 @@ using DataAccess;
 
 namespace Nhóm1
 {
-    public partial class frmInHoaDon : Form
+    public partial class frmPrintBill : Form
     {
-        private int billID; // Mã hóa đơn được truyền vào
+        private int billID;
        
-        public frmInHoaDon()
+        public frmPrintBill()
         {
             InitializeComponent();
         }
 
-        public frmInHoaDon(int billID)
+        public frmPrintBill(int billID)
         {
             InitializeComponent();
             this.billID = billID;
         }
 
-        private void frmInHoaDon_Load(object sender, EventArgs e)
+        private void frmPrintBill_Load(object sender, EventArgs e)
         {
             LoadBillInfo();
             LoadBillDetail();
         }
 
-        // ======================================
-        // 🔹 LOAD THÔNG TIN HÓA ĐƠN
-        // ======================================
         private void LoadBillInfo()
         {
             using (SqlConnection conn = Connection.GetConnection())
@@ -54,18 +51,15 @@ namespace Nhóm1
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    lblMaHD.Text = "Mã hóa đơn: " + reader["ID"].ToString();
-                    lblTaiKhoan.Text = "Tài khoản: " + reader["AccID"].ToString();
-                    lblNgayLap.Text = "Ngày lập: " + Convert.ToDateTime(reader["Date"]).ToString("dd/MM/yyyy");
-                    lblTongTien.Text = "Tổng cộng: " + Convert.ToDecimal(reader["Total"]).ToString("N0") + " VNĐ";
+                    lblID.Text = "Mã hóa đơn: " + reader["ID"].ToString();
+                    lblAccount.Text = "Tài khoản: " + reader["AccID"].ToString();
+                    lblDate.Text = "Ngày lập: " + Convert.ToDateTime(reader["Date"]).ToString("dd/MM/yyyy");
+                    lblTotal.Text = "Tổng cộng: " + Convert.ToDecimal(reader["Total"]).ToString("N0") + " VNĐ";
                 }
                 conn.Close();
             }
         }
 
-        // ======================================
-        // 🔹 LOAD CHI TIẾT HÓA ĐƠN
-        // ======================================
         private void LoadBillDetail()
         {
             using (SqlConnection conn = Connection.GetConnection())
@@ -86,20 +80,17 @@ namespace Nhóm1
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
-                dgvChiTiet.DataSource = dt;
-                dgvChiTiet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dgvChiTiet.Columns["Đơn Giá"].DefaultCellStyle.Format = "N0";
-                dgvChiTiet.Columns["Thành Tiền"].DefaultCellStyle.Format = "N0";
-                dgvChiTiet.Columns["Đơn Giá"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvChiTiet.Columns["Thành Tiền"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvChiTiet.Columns["Số Lượng"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvDetail.DataSource = dt;
+                dgvDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvDetail.Columns["Đơn Giá"].DefaultCellStyle.Format = "N0";
+                dgvDetail.Columns["Thành Tiền"].DefaultCellStyle.Format = "N0";
+                dgvDetail.Columns["Đơn Giá"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetail.Columns["Thành Tiền"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvDetail.Columns["Số Lượng"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 
-        // ======================================
-        // 🔹 IN HÓA ĐƠN
-        // ======================================
-        private void btnIn_Click(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
             PrintDialog printDialog = new PrintDialog();
             PrintDocument doc = new PrintDocument();

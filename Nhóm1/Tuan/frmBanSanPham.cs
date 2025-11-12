@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess;
 
@@ -22,7 +18,7 @@ namespace Nhóm1
         List<string> sp = new List<string>();
         List<string> gioHang = new List<string>();
 
-        #region query
+        #region Query
         static string basequery = @"
                             SELECT i.ID, i.Name, 
                                 CASE i.Gender 
@@ -36,14 +32,19 @@ namespace Nhóm1
                                     WHEN 'u18' THEN N'Thiếu niên' 
                                     WHEN '18' THEN N'Trưởng thành' 
                                 END AS Age,
-                                i.Type, i.Price, i.Stock, b.Name AS BrandName
+                                t.Name AS TypeName,
+                                i.Price,
+                                i.Stock,
+                                b.Name AS BrandName
                             FROM Item AS i
-                            INNER JOIN Brand AS b ON i.BrandID = b.ID";
+                            INNER JOIN Brand AS b ON i.BrandID = b.ID
+                            INNER JOIN [Type] t ON i.TypeID = t.ID
+                            ";
 
         static string queryFName = basequery + " Where LOWER(Name) LIKE LOWER(@tenSP)";
-        #endregion
+        #endregion Query
 
-        #region XuLyHam
+        #region Method
         private void frmBanSanPham_Load(object sender, EventArgs e)
         {
             LoadDataSanPham();
@@ -85,12 +86,12 @@ namespace Nhóm1
             {
                 clbKieu.Items.Clear();
                 conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter("SELECT DISTINCT Type FROM Item", conn);
+                SqlDataAdapter da = new SqlDataAdapter("SELECT Name FROM [Type]", conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 foreach (DataRow row in dt.Rows)
                 {
-                    clbKieu.Items.Add(row["Type"].ToString());
+                    clbKieu.Items.Add(row["TypeName"].ToString());
                 }
                 conn.Close();
             }
@@ -114,7 +115,7 @@ namespace Nhóm1
                 sp.Add(row.Cells["NameSP"].Value.ToString());   // sp[1]
                 sp.Add(row.Cells["Gender"].Value.ToString());   // sp[2]
                 sp.Add(row.Cells["Age"].Value.ToString());      // sp[3]
-                sp.Add(row.Cells["Type"].Value.ToString());     // sp[4]
+                sp.Add(row.Cells["TypeName"].Value.ToString());     // sp[4]
                 sp.Add(row.Cells["Price"].Value.ToString());    // sp[5]
                 sp.Add(row.Cells["Stock"].Value.ToString());    // sp[6]
                 sp.Add(row.Cells["BrandName"].Value.ToString());  // sp[7]
@@ -238,7 +239,7 @@ namespace Nhóm1
         private void LayIn4Loc(object sender, EventArgs e, ref string qr)
         {
             qr = " Where";
-            //Gia
+
             if (txtTu.Text != "" && txtDen.Text != "")
             {
                 if (int.Parse(txtTu.Text) > int.Parse(txtDen.Text))
@@ -278,11 +279,11 @@ namespace Nhóm1
                 {
                     if (i == kieuDang.Count - 1)
                     {
-                        qr += " Type = N'" + kieuDang[i] + "') ";
+                        qr += " TypeName = N'" + kieuDang[i] + "') ";
                     }
                     else
                     {
-                        qr += " Type = N'" + kieuDang[i] + "' Or";
+                        qr += " TypeName = N'" + kieuDang[i] + "' Or";
                     }
                 }
             }
@@ -433,26 +434,25 @@ namespace Nhóm1
 
         private void ClearPNLoc()
         {
-            //Gia
             txtTu.Text = "";
             txtDen.Text = "";
-            //KieuDang
+
             for (int i = 0; i < clbKieu.Items.Count; i++)
             {
                 clbKieu.SetItemChecked(i, false);
             }
-            //DoTuoi
+
             for (int i = 0; i < clbAge.Items.Count; i++)
             {
                 clbAge.SetItemChecked(i, false);
             }
-            //Hang
+
             for (int i = 0; i < clbBrand.Items.Count; i++)
             {
                 clbBrand.SetItemChecked(i, false);
             }
             txtHang.Text = "";
-            //Gender
+
             for (int i = 0; i < clbGender.Items.Count; i++)
             {
                 clbGender.SetItemChecked(i, false);
@@ -467,12 +467,11 @@ namespace Nhóm1
             var row = dgvGioHang.Rows[e.RowIndex];
             if (dgvGioHang.Columns[e.ColumnIndex].Name == "SoLuong")
             {
-                // Lấy giá trị số lượng
                 if (!int.TryParse(row.Cells["SoLuong"].Value?.ToString(), out int newValue) || newValue < 0)
                 {
                     MessageBox.Show("Vui lòng nhập số lượng hợp lệ (số nguyên dương).",
                                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    row.Cells["SoLuong"].Value = 1; // reset về mặc định
+                    row.Cells["SoLuong"].Value = 1;
                     return;
                 }
 
@@ -617,7 +616,6 @@ namespace Nhóm1
                 return;
             }
 
-            // Xác nhận thanh toán
             DialogResult confirm = MessageBox.Show("Bạn có chắc chắn muốn tạo hóa đơn cho đơn hàng này?",
                                                    "Xác nhận thanh toán",
                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -705,7 +703,7 @@ namespace Nhóm1
                                                          "In hóa đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (print == DialogResult.Yes)
                     {
-                        frmInHoaDon frmIn = new frmInHoaDon(newBillID);
+                        frmPrintBill frmIn = new frmPrintBill(newBillID);
                         frmIn.ShowDialog();
                     }
                 }
@@ -721,6 +719,6 @@ namespace Nhóm1
                 }
             }
         }
-        #endregion
+        #endregion Method
     }
 }

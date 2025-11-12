@@ -10,7 +10,7 @@ namespace Nhóm1
 {
     public partial class frmNhanVien : Form
     {
-        private bool isUpdatingCheck = false; // 🧱 tránh vòng lặp CheckedChanged
+        private bool isUpdatingCheck = false;
         private List<string> selectedEmployee = new List<string>();
 
         public frmNhanVien()
@@ -18,7 +18,6 @@ namespace Nhóm1
             InitializeComponent();
         }
 
-        // ============================ LOAD FORM ============================
         private void frmNhanVien_Load(object sender, EventArgs e)
         {
             LoadRoles();
@@ -46,7 +45,6 @@ namespace Nhóm1
             };
         }
 
-        // ============================ LOAD ROLE ============================
         private void LoadRoles()
         {
             using (SqlConnection conn = Connection.GetConnection())
@@ -63,7 +61,6 @@ namespace Nhóm1
             }
         }
 
-        // ============================ LOAD EMPLOYEES ============================
         private void LoadEmployeeList()
         {
             using (SqlConnection conn = Connection.GetConnection())
@@ -96,7 +93,6 @@ namespace Nhóm1
             dataDSNV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        // ============================ SEARCH ============================
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string inf = txtTimKiem.Text.Trim();
@@ -128,7 +124,6 @@ namespace Nhóm1
             }
         }
 
-        // ============================ REFRESH ============================
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             selectedEmployee.Clear();
@@ -149,7 +144,6 @@ namespace Nhóm1
             LoadEmployeeList();
         }
 
-        // ============================ SELECT ROW ============================
         private void dataDSNV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -182,7 +176,6 @@ namespace Nhóm1
             btnRSPass.Enabled = true;
         }
 
-        // ============================ UPDATE EMPLOYEE ============================
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (selectedEmployee.Count == 0) return;
@@ -242,7 +235,6 @@ namespace Nhóm1
             LoadEmployeeList();
         }
 
-        // ============================ DELETE EMPLOYEE ============================
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (selectedEmployee.Count == 0) return;
@@ -262,7 +254,6 @@ namespace Nhóm1
             btnLamMoi_Click(sender, e);
         }
 
-        // ============================ RESET PASSWORD ============================
         private void btnRSPass_Click(object sender, EventArgs e)
         {
             if (selectedEmployee.Count == 0) return;
@@ -286,7 +277,6 @@ namespace Nhóm1
             LoadEmployeeList();
         }
 
-        // ============================ ACTIVE CHECK ============================
         private void ckActive_CheckedChanged(object sender, EventArgs e)
         {
             if (isUpdatingCheck) return;
@@ -319,11 +309,10 @@ namespace Nhóm1
             LoadEmployeeList();
         }
 
-        // ============================ ADD NEW ============================
         private void btnThemNV_Click(object sender, EventArgs e)
         {
-            Tạo_tài_khoản tk = new Tạo_tài_khoản();
-            tk.Show();
+            frmCreateAccount ca = new frmCreateAccount();
+            ca.ShowDialog(this);
             this.Hide();
         }
     }

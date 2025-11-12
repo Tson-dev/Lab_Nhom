@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DataAccess;
@@ -20,12 +18,12 @@ namespace Nhóm1
 
         private void frmKho_Load(object sender, EventArgs e)
         {
-            dataDSSanPham.AutoGenerateColumns = false;
-            dataDSSanPham.ReadOnly = true;
-            dataDSSanPham.AllowUserToAddRows = false;
-            dataDSSanPham.AllowUserToDeleteRows = false;
+            dgvProd.AutoGenerateColumns = false;
+            dgvProd.ReadOnly = true;
+            dgvProd.AllowUserToAddRows = false;
+            dgvProd.AllowUserToDeleteRows = false;
 
-            dataDSSanPham.DataSource = LoadDSSanPham(null);
+            dgvProd.DataSource = LoadProd(null);
             LoadNhaCungCap();
 
             dtChiTietNhapTam = new DataTable();
@@ -35,22 +33,23 @@ namespace Nhóm1
             dtChiTietNhapTam.Columns.Add("Giá nhập", typeof(decimal));
             dtChiTietNhapTam.Columns.Add("Tổng tiền", typeof(decimal));
 
-            dataTTPhieu.DataSource = dtChiTietNhapTam;
+            dgvTTPhieu.DataSource = dtChiTietNhapTam;
         }
 
-        private DataTable LoadDSSanPham(string keyword)
+        private DataTable LoadProd(string keyword)
         {
             DataTable dt = new DataTable();
             string query = @"
                 SELECT 
                     i.ID, 
                     i.Name AS [Tên sản phẩm],
-                    i.Type AS [Loại],
+                    t.Name AS [Loại],
                     i.Price AS [Giá bán],
                     i.Stock AS [Số lượng tồn],
                     b.Name AS [Thương hiệu]
                 FROM Item i
                 INNER JOIN Brand b ON i.BrandID = b.ID
+                INNER JOIN Type t ON i.TypeID = t.ID
                 " + (string.IsNullOrEmpty(keyword) ? "" : "WHERE i.Name LIKE @Keyword OR b.Name LIKE @Keyword");
 
             using (SqlConnection conn = Connection.GetConnection())
@@ -69,41 +68,42 @@ namespace Nhóm1
         {
             DataTable dt = new DataTable();
             using (SqlConnection conn = Connection.GetConnection())
-            using (SqlCommand cmd = new SqlCommand("SELECT Name FROM Brand ORDER BY Name", conn))
+            using (SqlCommand cmd = new SqlCommand("SELECT Name FROM Brand", conn))
             {
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
             }
-            cbNCC.DataSource = dt;
-            cbNCC.DisplayMember = "Name";
-            cbNCC.ValueMember = "Name";
+            cbxBrand.DataSource = dt;
+            cbxBrand.DisplayMember = "Name";
+            cbxBrand.ValueMember = "Name";
         }
 
-        private void dataDSSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvProd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dataDSSanPham.Rows[e.RowIndex];
-                txtMaSP.Text = row.Cells["colMaSP"].Value.ToString();
+                DataGridViewRow row = dgvProd.Rows[e.RowIndex];
+                txtID.Text = row.Cells["colMaSP"].Value.ToString();
                 txtTenSP.Text = row.Cells["colTenSP"].Value.ToString();
-                cbNCC.Text = row.Cells["colThuongHieu"].Value.ToString();
-                txtGiaBan.Text = row.Cells["colGiaBan"].Value.ToString();
-                txtSoLuongTon.Text = row.Cells["colSoLuong"].Value.ToString();
-                cbSoLuong.Text = "1";
+                cbxBrand.Text = row.Cells["colThuongHieu"].Value.ToString();
+                txtPrice.Text = row.Cells["colGiaBan"].Value.ToString();
+                txtStock.Text = row.Cells["colSoLuong"].Value.ToString();
+                cbxImport.Text = "1";
             }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string keyword = txtSearch.Text.Trim();
-            dataDSSanPham.DataSource = LoadDSSanPham(keyword);
+            dgvProd.DataSource = LoadProd(keyword);
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             string tenSP = txtTenSP.Text.Trim();
             string loai = "Shoes";
-            int brandID = GetBrandID(cbNCC.Text);
+            int brandID = GetBrandID(cbxBrand.Text),
+                typeID = GetTypeID(loai);
 
             if (string.IsNullOrEmpty(tenSP))
             {
@@ -117,7 +117,7 @@ namespace Nhóm1
                 return;
             }
 
-            if (!decimal.TryParse(txtGiaBan.Text.Trim(), out decimal price) || price <= 0)
+            if (!decimal.TryParse(txtPrice.Text.Trim(), out decimal price) || price <= 0)
             {
                 MessageBox.Show("Giá bán phải là số dương hợp lệ!", "Cảnh báo");
                 return;
@@ -127,26 +127,26 @@ namespace Nhóm1
             {
                 conn.Open();
                 string query = @"
-                    INSERT INTO Item (Name, Gender, Age, Type, Price, Stock, BrandID)
-                    VALUES (@Name, 0, '18', @Type, @Price, 0, @BrandID)";
+                    INSERT INTO Item (Name, Gender, Age, TypeID, Price, Stock, BrandID)
+                    VALUES (@Name, 0, '18', @TypeID, @Price, 0, @BrandID)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Name", tenSP);
-                cmd.Parameters.AddWithValue("@Type", loai);
+                cmd.Parameters.AddWithValue("@TypeID", typeID);
                 cmd.Parameters.AddWithValue("@Price", price);
                 cmd.Parameters.AddWithValue("@BrandID", brandID);
                 cmd.ExecuteNonQuery();
             }
 
             MessageBox.Show($"✅ Đã thêm sản phẩm '{tenSP}' với giá {price:N0} VNĐ!");
-            dataDSSanPham.DataSource = LoadDSSanPham(null);
+            dgvProd.DataSource = LoadProd(null);
             txtTenSP.Clear();
-            txtGiaBan.Clear();
+            txtPrice.Clear();
         }
 
         private int GetBrandID(string brandName)
         {
             using (SqlConnection conn = Connection.GetConnection())
-            using (SqlCommand cmd = new SqlCommand("SELECT ID FROM Brand WHERE Name=@Name", conn))
+            using (SqlCommand cmd = new SqlCommand("SELECT ID FROM Brand WHERE [Name] = @Name", conn))
             {
                 cmd.Parameters.AddWithValue("@Name", brandName);
                 conn.Open();
@@ -155,19 +155,31 @@ namespace Nhóm1
             }
         }
 
-        private void btnChon_Click(object sender, EventArgs e)
+        private int GetTypeID(string typeName)
         {
-            if (dataDSSanPham.SelectedRows.Count == 0)
+            using (SqlConnection conn = Connection.GetConnection())
+            using (SqlCommand cmd = new SqlCommand("SELECT ID FROM [Type] WHERE [Name] = @Name", conn))
+            {
+                cmd.Parameters.AddWithValue("@Name", typeName);
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if (dgvProd.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Vui lòng chọn sản phẩm.", "Thông báo");
                 return;
             }
 
-            DataGridViewRow selectedRow = dataDSSanPham.SelectedRows[0];
+            DataGridViewRow selectedRow = dgvProd.SelectedRows[0];
             string maSP = selectedRow.Cells["colMaSP"].Value.ToString();
             string tenSP = selectedRow.Cells["colTenSP"].Value.ToString();
             decimal giaNhap = Convert.ToDecimal(selectedRow.Cells["colGiaBan"].Value) * 0.8m;
-            int soLuong = int.TryParse(cbSoLuong.Text, out int sl) ? sl : 1;
+            int soLuong = int.TryParse(cbxImport.Text, out int sl) ? sl : 1;
 
             DataRow existingRow = dtChiTietNhapTam.AsEnumerable()
                 .FirstOrDefault(r => r.Field<string>("Tên sản phẩm") == tenSP);
@@ -191,7 +203,7 @@ namespace Nhóm1
             dtChiTietNhapTam.AcceptChanges();
         }
 
-        private void btnXacNhan_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (dtChiTietNhapTam.Rows.Count == 0)
             {
@@ -213,7 +225,7 @@ namespace Nhóm1
                     SqlCommand cmd = new SqlCommand(insertBill, conn, transaction);
                     decimal total = dtChiTietNhapTam.AsEnumerable().Sum(r => r.Field<decimal>("Tổng tiền"));
                     cmd.Parameters.AddWithValue("@Total", total);
-                    cmd.Parameters.AddWithValue("@BrandID", GetBrandID(cbNCC.Text));
+                    cmd.Parameters.AddWithValue("@BrandID", GetBrandID(cbxBrand.Text));
 
                     int billID = (int)cmd.ExecuteScalar();
 
@@ -241,7 +253,7 @@ namespace Nhóm1
                     transaction.Commit();
                     MessageBox.Show("✅ Phiếu nhập hàng đã được lưu và tồn kho đã được cập nhật!", "Thành công");
                     dtChiTietNhapTam.Rows.Clear();
-                    dataDSSanPham.DataSource = LoadDSSanPham(null);
+                    dgvProd.DataSource = LoadProd(null);
                 }
                 catch (Exception ex)
                 {
@@ -251,14 +263,14 @@ namespace Nhóm1
             }
         }
 
-        private void btnThemBrand_Click(object sender, EventArgs e)
+        private void btnAddBrand_Click(object sender, EventArgs e)
         {
             frmBrand frm = new frmBrand();
             var result = frm.ShowDialog();
             if (result == DialogResult.OK && !string.IsNullOrEmpty(frm.SelectedName))
             {
                 LoadNhaCungCap();
-                cbNCC.Text = frm.SelectedName;
+                cbxBrand.Text = frm.SelectedName;
             }
             else
             {

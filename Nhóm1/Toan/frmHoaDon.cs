@@ -16,11 +16,9 @@ namespace Nhóm1
 
         private void frmHoaDon_Load(object sender, EventArgs e)
         {
-            // Đặt ngày mặc định
-            dateTimePicker2.Value = DateTime.Now;            // Hôm nay
+            dateTimePicker2.Value = DateTime.Now;
             dateTimePicker1.Value = new DateTime(2000, 1, 1);
 
-            // (phần code còn lại giữ nguyên)
             StyleDataGridView(dgvBill);
             StyleDataGridView(dgvBillDetail);
             cbLoaiHoaDon.Items.Add("Tất cả");
@@ -47,9 +45,6 @@ namespace Nhóm1
             dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
         }
 
-        // ===========================
-        // 📋 Tải danh sách hóa đơn
-        // ===========================
         private void LoadBillList()
         {
             using (SqlConnection conn = Connection.GetConnection())
@@ -71,7 +66,6 @@ namespace Nhóm1
                     WHERE b.Date BETWEEN @from AND @to
                 ";
 
-                // Lọc loại hóa đơn theo combobox
                 if (cbLoaiHoaDon.SelectedIndex == 1)
                     query += " AND b.BillType = 'Import'";
                 else if (cbLoaiHoaDon.SelectedIndex == 2)
@@ -103,9 +97,6 @@ namespace Nhóm1
             }
         }
 
-        // ===========================
-        // 🧾 Tải chi tiết hóa đơn
-        // ===========================
         private void LoadBillDetail(int billID)
         {
             using (SqlConnection conn = Connection.GetConnection())
@@ -138,9 +129,6 @@ namespace Nhóm1
             }
         }
 
-        // ===========================
-        // 📌 Sự kiện click bảng hóa đơn
-        // ===========================
         private void dgvBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -154,25 +142,16 @@ namespace Nhóm1
             }
         }
 
-        // ===========================
-        // 🔍 Nút tìm kiếm
-        // ===========================
         private void pbTimKiem_Click(object sender, EventArgs e)
         {
             LoadBillList();
         }
 
-        // ===========================
-        // 🔄 Thay đổi loại hóa đơn
-        // ===========================
         private void cbLoaiHoaDon_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadBillList();
         }
 
-        // ===========================
-        // 🖨️ In hóa đơn
-        // ===========================
         private void pbTaoPhieu_Click(object sender, EventArgs e)
         {
             if (dgvBill.SelectedRows.Count == 0)
@@ -182,7 +161,7 @@ namespace Nhóm1
             }
 
             int billID = Convert.ToInt32(dgvBill.SelectedRows[0].Cells["Mã Hóa Đơn"].Value);
-            frmInHoaDon frm = new frmInHoaDon(billID);
+            frmPrintBill frm = new frmPrintBill(billID);
             frm.ShowDialog();
         }
     }

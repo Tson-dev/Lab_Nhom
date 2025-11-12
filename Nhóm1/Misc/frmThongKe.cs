@@ -16,7 +16,6 @@ namespace Nhóm1
 
         private void frmThongKe_Load(object sender, EventArgs e)
         {
-            // Load danh sách năm (từ dữ liệu có trong Bill)
             using (SqlConnection conn = Connection.GetConnection())
             {
                 string query = "SELECT DISTINCT YEAR(Date) AS Nam FROM Bill ORDER BY Nam DESC";
@@ -24,13 +23,13 @@ namespace Nhóm1
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                cbNam.DataSource = dt;
-                cbNam.DisplayMember = "Nam";
-                cbNam.ValueMember = "Nam";
+                cbxYear.DataSource = dt;
+                cbxYear.DisplayMember = "Nam";
+                cbxYear.ValueMember = "Nam";
             }
 
-            if (cbNam.Items.Count > 0)
-                cbNam.SelectedIndex = 0;
+            if (cbxYear.Items.Count > 0)
+                cbxYear.SelectedIndex = 0;
 
             LoadThongKe();
         }
@@ -42,8 +41,8 @@ namespace Nhóm1
 
         private void LoadThongKe()
         {
-            if (cbNam.SelectedValue == null) return;
-            int nam = Convert.ToInt32(cbNam.SelectedValue);
+            if (cbxYear.SelectedValue == null) return;
+            int nam = Convert.ToInt32(cbxYear.SelectedValue);
 
             DataTable dt = new DataTable();
             using (SqlConnection conn = Connection.GetConnection())
@@ -62,11 +61,10 @@ namespace Nhóm1
                 da.Fill(dt);
             }
 
-            // Vẽ biểu đồ
-            chartThongKe.Series.Clear();
-            chartThongKe.ChartAreas[0].AxisX.Title = "Tháng";
-            chartThongKe.ChartAreas[0].AxisY.Title = "Giá trị (VNĐ)";
-            chartThongKe.ChartAreas[0].AxisX.Interval = 1;
+            chartStatictis.Series.Clear();
+            chartStatictis.ChartAreas[0].AxisX.Title = "Tháng";
+            chartStatictis.ChartAreas[0].AxisY.Title = "Giá trị (VNĐ)";
+            chartStatictis.ChartAreas[0].AxisX.Interval = 1;
 
             Series sExport = new Series("Doanh thu (Export)");
             sExport.ChartType = SeriesChartType.Area;
@@ -90,13 +88,12 @@ namespace Nhóm1
                 tongNhap += import;
             }
 
-            chartThongKe.Series.Add(sExport);
-            chartThongKe.Series.Add(sImport);
+            chartStatictis.Series.Add(sExport);
+            chartStatictis.Series.Add(sImport);
 
-            // Cập nhật thống kê tổng
-            lblTongDoanhThu.Text = $"{tongXuat:N0} VNĐ";
+            lblTotalExport.Text = $"{tongXuat:N0} VNĐ";
             lblTongNhap.Text = $"{tongNhap:N0} VNĐ";
-            lblLoiNhuan.Text = $"{(tongXuat - tongNhap):N0} VNĐ";
+            lblTotalEarn.Text = $"{(tongXuat - tongNhap):N0} VNĐ";
 
             LoadTopSanPham();
         }
@@ -125,12 +122,12 @@ namespace Nhóm1
                 SqlDataAdapter da = new SqlDataAdapter(queryTop, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dgvSanPham.DataSource = dt;
+                dgvProd.DataSource = dt;
             }
 
-            dgvSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvSanPham.ReadOnly = true;
-            dgvSanPham.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvProd.ReadOnly = true;
+            dgvProd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
     }
 }

@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Nhóm1
 {
-    public partial class frmTrangChu : Form
+    public partial class frmMain : Form
     {
         public static string userRole;
-        public frmTrangChu()
+        public frmMain()
         {
             InitializeComponent();
         }
 
-        public frmTrangChu(string ur)
+        public frmMain(string ur)
         {
             InitializeComponent();
             userRole = ur;
@@ -27,43 +20,43 @@ namespace Nhóm1
         {
             if (userRole == "Admin")
             {
-                btnBanSanPham.Enabled = true;
-                btnNhapSanPham.Enabled = true;
-                btnNhanVien.Enabled = true;
-                btnThongKe.Enabled = true;
-                btnNhanVien.Enabled = true;
-                btnHoaDon.Enabled = true;
-                btnSanPham.Enabled = true;
+                btnSell.Enabled = true;
+                btnStorge.Enabled = true;
+                btnEmployee.Enabled = true;
+                btnStatictis.Enabled = true;
+                btnEmployee.Enabled = true;
+                btnBill.Enabled = true;
+                btnProd.Enabled = true;
             }
             else if (userRole == "Sales")
             {
-                btnBanSanPham.Enabled = false;
-                btnNhapSanPham.Enabled = false;
-                btnNhanVien.Enabled = false;
-                btnThongKe.Enabled = false;
-                btnNhanVien.Enabled = false;
-                btnHoaDon.Enabled = false;
-                btnSanPham.Enabled = true;
+                btnSell.Enabled = false;
+                btnStorge.Enabled = false;
+                btnEmployee.Enabled = false;
+                btnStatictis.Enabled = false;
+                btnEmployee.Enabled = false;
+                btnBill.Enabled = false;
+                btnProd.Enabled = true;
             }
             else if (userRole == "Manager")
             {
-                btnBanSanPham.Enabled = true;
-                btnNhapSanPham.Enabled = true;
-                btnNhanVien.Enabled = true;
-                btnThongKe.Enabled = true;
-                btnNhanVien.Enabled = false;
-                btnHoaDon.Enabled = true;
-                btnSanPham.Enabled = true;
+                btnSell.Enabled = true;
+                btnStorge.Enabled = true;
+                btnEmployee.Enabled = true;
+                btnStatictis.Enabled = true;
+                btnEmployee.Enabled = false;
+                btnBill.Enabled = true;
+                btnProd.Enabled = true;
             }
             else if (userRole == "Cashier")
             {
-                btnBanSanPham.Enabled = true;
-                btnNhapSanPham.Enabled = false;
-                btnNhanVien.Enabled = false;
-                btnThongKe.Enabled = false;
-                btnNhanVien.Enabled = false;
-                btnHoaDon.Enabled = true;
-                btnSanPham.Enabled = true;
+                btnSell.Enabled = true;
+                btnStorge.Enabled = false;
+                btnEmployee.Enabled = false;
+                btnStatictis.Enabled = false;
+                btnEmployee.Enabled = false;
+                btnBill.Enabled = true;
+                btnProd.Enabled = true;
             }
         }
 
@@ -81,8 +74,8 @@ namespace Nhóm1
         {
             if (menuExpand)
             {
-                Phong.Width -= 10;
-                if (Phong.Width <= 61)
+                floPhong.Width -= 10;
+                if (floPhong.Width <= 61)
                 {
                     menuExpand = false;
                     sidebarTransition.Stop();
@@ -90,8 +83,8 @@ namespace Nhóm1
             }
             else
             {
-                Phong.Width += 10;
-                if (Phong.Width >= 203)
+                floPhong.Width += 10;
+                if (floPhong.Width >= 203)
                 {
                     menuExpand = true;
                     sidebarTransition.Stop();
@@ -146,12 +139,12 @@ namespace Nhóm1
 
         private void btnSanPham_MouseDown(object sender, MouseEventArgs e)
         {
-            pictureBox4.BackColor = System.Drawing.Color.DarkTurquoise;
+            pbxProd.BackColor = System.Drawing.Color.DarkTurquoise;
         }
 
         private void btnSanPham_MouseUp(object sender, MouseEventArgs e)
         {
-            pictureBox4.BackColor = System.Drawing.Color.PaleTurquoise;
+            pbxProd.BackColor = System.Drawing.Color.PaleTurquoise;
         }
 
         private void btnBanSanPham_Click(object sender, EventArgs e)

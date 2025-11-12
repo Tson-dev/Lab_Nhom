@@ -5,32 +5,31 @@ using DataAccess;
 
 namespace Nhóm1
 {
-    public partial class Tạo_tài_khoản : Form
+    public partial class frmCreateAccount : Form
     {
-        public Tạo_tài_khoản()
+        public frmCreateAccount()
         {
             InitializeComponent();
         }
 
-        private void lblThoat_Click(object sender, EventArgs e)
+        private void lblExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void cbHienThi_CheckedChanged(object sender, EventArgs e)
+        private void cbxHienThi_CheckedChanged(object sender, EventArgs e)
         {
-            bool hien = cbHienThi.Checked;
+            bool hien = cbxHienThi.Checked;
             txtMatKhau.PasswordChar = hien ? '\0' : '*';
             txtXacNhan.PasswordChar = hien ? '\0' : '*';
         }
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            string username = txtDangNhap1.Text.Trim();
+            string username = txtUsername.Text.Trim();
             string password = txtMatKhau.Text.Trim();
             string confirmPassword = txtXacNhan.Text.Trim();
 
-            // Kiểm tra nhập liệu
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -43,7 +42,6 @@ namespace Nhóm1
                 return;
             }
 
-            // Xác định Role
             string role = "";
             if (username.StartsWith("AD", StringComparison.OrdinalIgnoreCase))
                 role = "Admin";
@@ -56,7 +54,6 @@ namespace Nhóm1
                 return;
             }
 
-            // Thêm dữ liệu vào DB
             using (SqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
@@ -64,7 +61,6 @@ namespace Nhóm1
 
                 try
                 {
-                    // 1️⃣ Thêm vào Account
                     string queryAcc = @"
                         INSERT INTO Account (Username, Password, Role, Active)
                         VALUES (@Username, @Password, @Role, 1);
@@ -79,7 +75,6 @@ namespace Nhóm1
                         newAccountId = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
-                    // 2️⃣ Thêm vào Employee (chưa có thông tin chi tiết)
                     string queryEmp = @"
                         INSERT INTO Employee (FullName, Gender, BirthDate, Address, Phone, Email, RoleID, AccountID)
                         VALUES (NULL, NULL, NULL, NULL, NULL, NULL, 

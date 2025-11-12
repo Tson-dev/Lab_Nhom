@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess;
 
@@ -20,7 +13,7 @@ namespace Nhóm1
             txtPassword.UseSystemPasswordChar = false;
             txtPassword.PasswordChar = '*';
 
-            cbHienMk.CheckedChanged += cbHienMk_CheckedChanged;
+            cbHienPass.CheckedChanged += cbHienMk_CheckedChanged;
         }
 
         private void lblThoat_Click(object sender, EventArgs e)
@@ -45,7 +38,7 @@ namespace Nhóm1
                 {
                     conn.Open();
 
-                    string query = "SELECT a.Role, a.Active FROM Account as a WHERE Username=@user AND Password=@pass";
+                    string query = "SELECT a.Role, a.Active FROM Account as a WHERE Username = @user AND Password=@pass";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@user", username);
                     cmd.Parameters.AddWithValue("@pass", password);
@@ -65,7 +58,7 @@ namespace Nhóm1
 
                         MessageBox.Show($"Đăng nhập thành công! Tài khoản: {role}", "Thành công");
 
-                        frmTrangChu tt = new frmTrangChu(role);
+                        frmMain tt = new frmMain(role);
                         tt.Show();
                         this.Hide();
                     }
@@ -83,7 +76,7 @@ namespace Nhóm1
    
         private void cbHienMk_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbHienMk.Checked)
+            if (cbHienPass.Checked)
             {
                 txtPassword.PasswordChar = '\0';
             }

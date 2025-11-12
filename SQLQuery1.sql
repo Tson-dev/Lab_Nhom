@@ -9,10 +9,26 @@ GO
 USE ShoeShop;
 GO
 
-----------------------------------------------------
--- 1️⃣ Bảng Role
-----------------------------------------------------
-CREATE TABLE Role (
+create table [Type]
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+    [Name] NVARCHAR(100) NOT NULL
+);
+set IDENTITY_INSERT [dbo].[Type] on
+INSERT INTO [Type] (ID, [Name])
+VALUES
+(1, N'Sandal'),
+(2, N'Shoes'),
+(3, N'Boot'),
+(4, N'Sport');
+go
+set IDENTITY_INSERT [dbo].[Type] off
+
+-- ===========================
+-- 1. Bảng Role
+-- ===========================
+CREATE TABLE [Role]
+(
     ID INT IDENTITY(1,1) PRIMARY KEY,
     RoleName NVARCHAR(50) NOT NULL UNIQUE,
     Description NVARCHAR(200)
@@ -102,12 +118,15 @@ CREATE TABLE Item (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Gender INT CHECK (Gender IN (0,1,2)), -- 0=Unisex,1=Nữ,2=Nam
-    Age NVARCHAR(5) CHECK (Age IN ('u5','u11','u18','18')),
-    Type NVARCHAR(30) CHECK (Type IN (N'Sandal', N'Shoes', N'Boot', N'Heels', N'Sport')),
+    Age NVARCHAR(3) CHECK (Age IN ('u5','u11','u18','18')),
+	Size int NULL,
+	TypeID INT NOT NUll,
     Price INT CHECK (Price >= 0),
     Stock INT CHECK (Stock >= 0),
     BrandID INT NULL,
-    CONSTRAINT FK_Item_Brand FOREIGN KEY (BrandID) REFERENCES Brand(ID)
+	Actived BIT Default 1
+    CONSTRAINT FK_Item_Brand FOREIGN KEY (BrandID) REFERENCES Brand(ID),
+    CONSTRAINT FK_Item_Type FOREIGN KEY (TypeID) REFERENCES [Type](ID)
 );
 
 INSERT INTO Item (Name, Gender, Age, Type, Price, Stock, BrandID)
@@ -161,7 +180,7 @@ CREATE TABLE BillDetail (
     Price INT CHECK (Price >= 0),
     Source NVARCHAR(50) NULL,
     CONSTRAINT FK_BillDetail_Bill FOREIGN KEY (BillID) REFERENCES Bill(ID) ON DELETE CASCADE,
-    CONSTRAINT FK_BillDetail_Item FOREIGN KEY (ItemID) REFERENCES Item(ID)
+    CONSTRAINT FK_BillDetail_Item FOREIGN KEY (ItemID) REFERENCES Item(ID) ON DELETE CASCADE
 );
 GO
 
@@ -284,3 +303,98 @@ VALUES
 (47,13,1,1800000),(48,14,1,2200000),
 (49,15,3,1100000),(50,16,1,900000);
 GO
+
+go
+Create proc [dbo].[GetBillByDate]
+	@day int = null,
+	@month int = null,
+	@year int = null
+as
+begin
+/*
+    Proc Name : GetBillByDate
+    Purpose   : Lấy Bill trong thời gian cụ thể, có thể lọc theo ngày/tháng/năm nếu được cung cấp.
+                Quy tắc lọc:
+                - Nếu có đủ @day, @month, @year => lọc theo ngày/tháng/năm
+                - Nếu có @month, @year nhưng @day null => lọc theo tháng/năm
+                - Nếu chỉ có @year => lọc theo năm
+                - Nếu tất cả null => không lọc theo thời gian (đương tương với GetAll)
+*/
+declare 
+        @isDayNull bit = case when @day is null then 1 else 0 end,
+        @isMonthNull bit = case when @month is null then 1 else 0 end,
+        @isYearNull bit = case when @year is null then 1 else 0 end;
+
+select *
+from Bill b
+where (
+		(
+		@isDayNull = 0 and @isMonthNull = 0 and @isYearNull = 0
+		and day(b.[Date]) = @day and month(b.[Date]) = @month and year(b.[Date]) = @year
+		)
+		or
+		(
+		@isDayNull = 1 and @isMonthNull = 0 and @isYearNull = 0
+		and  month(b.[Date]) = @month and year(b.[Date]) = @year
+		)
+        or
+		(
+		@isDayNull = 1 and @isMonthNull = 1 and @isYearNull = 0
+		and year(b.[Date]) = @year
+		)
+        or
+		(
+		@isDayNull = 1 and @isMonthNull = 1 and @isYearNull = 1
+		)
+		)
+end;
+go
+Create proc [dbo].[GetTotal]
+	@BillID int,
+	@ItemID int,
+	@day int = null,
+	@month int = null,
+	@year int = null
+as
+begin
+/*
+    Proc Name : GetBillTotal
+    Purpose   : Tính total theo chi tiết hóa đơn (Quantity * Price) có thể lọc theo ngày/tháng/năm nếu được cung cấp.
+                Quy tắc lọc:
+                - Nếu có đủ @day, @month, @year => lọc theo ngày/tháng/năm
+                - Nếu có @month, @year nhưng @day null => lọc theo tháng/năm
+                - Nếu chỉ có @year => lọc theo năm
+                - Nếu tất cả null => không lọc theo thời gian
+*/
+declare 
+        @isDayNull bit = case when @day is null then 1 else 0 end,
+        @isMonthNull bit = case when @month is null then 1 else 0 end,
+        @isYearNull bit = case when @year is null then 1 else 0 end;
+
+select (bd.Quantity * bd.Price) as Total, b.[Date]
+from BillDetail bd
+join Bill b on b.ID = bd.BillID
+where b.ID = @BillID
+	and bd.ItemID = @ItemID
+	and(
+		(
+		@isDayNull = 0 and @isMonthNull = 0 and @isYearNull = 0
+		and day(b.[Date]) = @day and month(b.[Date]) = @month and year(b.[Date]) = @year
+		)
+		or
+		(
+		@isDayNull = 1 and @isMonthNull = 0 and @isYearNull = 0
+		and  month(b.[Date]) = @month and year(b.[Date]) = @year
+		)
+        or
+		(
+		@isDayNull = 1 and @isMonthNull = 1 and @isYearNull = 0
+		and year(b.[Date]) = @year
+		)
+        or
+		(
+		@isDayNull = 1 and @isMonthNull = 1 and @isYearNull = 1
+		)
+		)
+end;
+

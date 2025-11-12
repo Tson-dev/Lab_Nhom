@@ -10,6 +10,6 @@ namespace Nhóm1
 {
     internal class Connection
     {
-        
+        public static readonly string ConnectionString = "server = .\\UTFUSONSQLSERVER; database = ShoeShop; Integrated Security = True;";
     }
 }

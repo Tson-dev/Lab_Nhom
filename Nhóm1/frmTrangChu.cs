@@ -141,7 +141,7 @@ namespace Nhóm1
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmSanPham());
+            OpenChildForm(new frmProd());
         }
 
         private void btnSanPham_MouseDown(object sender, MouseEventArgs e)
@@ -161,7 +161,7 @@ namespace Nhóm1
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmSanPham());
+            OpenChildForm(new frmProd());
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)

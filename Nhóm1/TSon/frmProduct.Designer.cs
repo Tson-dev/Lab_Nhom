@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProd));
             this.gbxInfo = new System.Windows.Forms.GroupBox();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.cbNCC = new System.Windows.Forms.ComboBox();
             this.cmsBrand = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsBrand_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +72,6 @@
             this.colAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnFind_Reset = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.cmsInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsFind = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -89,6 +84,13 @@
             this.cmsInfo_Less = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsFind_tsiReset = new System.Windows.Forms.ToolStripMenuItem();
             this.cms_dgvProd_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rbtnMale = new System.Windows.Forms.RadioButton();
+            this.rbtnFemale = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.gbxInfo.SuspendLayout();
             this.cmsBrand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBrand)).BeginInit();
@@ -104,15 +106,17 @@
             this.cmsInfo.SuspendLayout();
             this.cmsFind.SuspendLayout();
             this.cms_dgvProd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxInfo
             // 
             this.gbxInfo.ContextMenuStrip = this.cmsInfo;
-            this.gbxInfo.Controls.Add(this.btnReset);
-            this.gbxInfo.Controls.Add(this.btnDelete);
-            this.gbxInfo.Controls.Add(this.btnUpdate);
-            this.gbxInfo.Controls.Add(this.btnAdd);
+            this.gbxInfo.Controls.Add(this.radioButton1);
+            this.gbxInfo.Controls.Add(this.rbtnFemale);
+            this.gbxInfo.Controls.Add(this.rbtnMale);
+            this.gbxInfo.Controls.Add(this.btnCancel);
+            this.gbxInfo.Controls.Add(this.btnConfirm);
             this.gbxInfo.Controls.Add(this.cbNCC);
             this.gbxInfo.Controls.Add(this.lblBrand);
             this.gbxInfo.Controls.Add(this.pbxBrand);
@@ -125,7 +129,9 @@
             this.gbxInfo.Controls.Add(this.cbLoai);
             this.gbxInfo.Controls.Add(this.lblLoai);
             this.gbxInfo.Controls.Add(this.pbxType);
+            this.gbxInfo.Controls.Add(this.label1);
             this.gbxInfo.Controls.Add(this.lblAge);
+            this.gbxInfo.Controls.Add(this.pictureBox1);
             this.gbxInfo.Controls.Add(this.pbxAge);
             this.gbxInfo.Controls.Add(this.txtAge);
             this.gbxInfo.Controls.Add(this.txtName);
@@ -138,61 +144,12 @@
             this.gbxInfo.TabIndex = 0;
             this.gbxInfo.TabStop = false;
             this.gbxInfo.Text = "Information";
-            this.gbxInfo.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // btnReset
-            // 
-            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(153, 458);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(98, 33);
-            this.btnReset.TabIndex = 53;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(281, 410);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(98, 33);
-            this.btnDelete.TabIndex = 52;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(153, 410);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(98, 33);
-            this.btnUpdate.TabIndex = 51;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(19, 410);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(98, 33);
-            this.btnAdd.TabIndex = 50;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // cbNCC
             // 
             this.cbNCC.ContextMenuStrip = this.cmsBrand;
             this.cbNCC.FormattingEnabled = true;
-            this.cbNCC.Location = new System.Drawing.Point(132, 337);
+            this.cbNCC.Location = new System.Drawing.Point(132, 385);
             this.cbNCC.Name = "cbNCC";
             this.cbNCC.Size = new System.Drawing.Size(282, 28);
             this.cbNCC.TabIndex = 49;
@@ -232,7 +189,7 @@
             // 
             this.lblBrand.AutoSize = true;
             this.lblBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBrand.Location = new System.Drawing.Point(52, 340);
+            this.lblBrand.Location = new System.Drawing.Point(52, 388);
             this.lblBrand.Name = "lblBrand";
             this.lblBrand.Size = new System.Drawing.Size(52, 20);
             this.lblBrand.TabIndex = 48;
@@ -241,7 +198,7 @@
             // pbxBrand
             // 
             this.pbxBrand.Image = ((System.Drawing.Image)(resources.GetObject("pbxBrand.Image")));
-            this.pbxBrand.Location = new System.Drawing.Point(6, 330);
+            this.pbxBrand.Location = new System.Drawing.Point(6, 378);
             this.pbxBrand.Name = "pbxBrand";
             this.pbxBrand.Size = new System.Drawing.Size(39, 37);
             this.pbxBrand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -250,7 +207,7 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(132, 275);
+            this.txtPrice.Location = new System.Drawing.Point(132, 323);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(282, 26);
             this.txtPrice.TabIndex = 46;
@@ -259,7 +216,7 @@
             // 
             this.lblGiaBan.AutoSize = true;
             this.lblGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGiaBan.Location = new System.Drawing.Point(52, 278);
+            this.lblGiaBan.Location = new System.Drawing.Point(52, 326);
             this.lblGiaBan.Name = "lblGiaBan";
             this.lblGiaBan.Size = new System.Drawing.Size(44, 20);
             this.lblGiaBan.TabIndex = 45;
@@ -268,7 +225,7 @@
             // pbxPrice
             // 
             this.pbxPrice.Image = ((System.Drawing.Image)(resources.GetObject("pbxPrice.Image")));
-            this.pbxPrice.Location = new System.Drawing.Point(6, 268);
+            this.pbxPrice.Location = new System.Drawing.Point(6, 316);
             this.pbxPrice.Name = "pbxPrice";
             this.pbxPrice.Size = new System.Drawing.Size(39, 40);
             this.pbxPrice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -277,7 +234,7 @@
             // 
             // nudSize
             // 
-            this.nudSize.Location = new System.Drawing.Point(132, 212);
+            this.nudSize.Location = new System.Drawing.Point(132, 260);
             this.nudSize.Maximum = new decimal(new int[] {
             45,
             0,
@@ -301,7 +258,7 @@
             // 
             this.lblSize.AutoSize = true;
             this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSize.Location = new System.Drawing.Point(52, 213);
+            this.lblSize.Location = new System.Drawing.Point(52, 261);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(40, 20);
             this.lblSize.TabIndex = 39;
@@ -310,7 +267,7 @@
             // pbxSize
             // 
             this.pbxSize.Image = ((System.Drawing.Image)(resources.GetObject("pbxSize.Image")));
-            this.pbxSize.Location = new System.Drawing.Point(6, 204);
+            this.pbxSize.Location = new System.Drawing.Point(6, 252);
             this.pbxSize.Name = "pbxSize";
             this.pbxSize.Size = new System.Drawing.Size(39, 38);
             this.pbxSize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -321,7 +278,7 @@
             // 
             this.cbLoai.ContextMenuStrip = this.cmsCategory;
             this.cbLoai.FormattingEnabled = true;
-            this.cbLoai.Location = new System.Drawing.Point(132, 153);
+            this.cbLoai.Location = new System.Drawing.Point(132, 201);
             this.cbLoai.Name = "cbLoai";
             this.cbLoai.Size = new System.Drawing.Size(282, 28);
             this.cbLoai.TabIndex = 37;
@@ -358,7 +315,7 @@
             // 
             this.lblLoai.AutoSize = true;
             this.lblLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoai.Location = new System.Drawing.Point(51, 155);
+            this.lblLoai.Location = new System.Drawing.Point(51, 203);
             this.lblLoai.Name = "lblLoai";
             this.lblLoai.Size = new System.Drawing.Size(43, 20);
             this.lblLoai.TabIndex = 36;
@@ -367,7 +324,7 @@
             // pbxType
             // 
             this.pbxType.Image = ((System.Drawing.Image)(resources.GetObject("pbxType.Image")));
-            this.pbxType.Location = new System.Drawing.Point(6, 146);
+            this.pbxType.Location = new System.Drawing.Point(6, 194);
             this.pbxType.Name = "pbxType";
             this.pbxType.Size = new System.Drawing.Size(39, 38);
             this.pbxType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -378,7 +335,7 @@
             // 
             this.lblAge.AutoSize = true;
             this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAge.Location = new System.Drawing.Point(52, 98);
+            this.lblAge.Location = new System.Drawing.Point(52, 146);
             this.lblAge.Name = "lblAge";
             this.lblAge.Size = new System.Drawing.Size(38, 20);
             this.lblAge.TabIndex = 33;
@@ -387,7 +344,7 @@
             // pbxAge
             // 
             this.pbxAge.Image = ((System.Drawing.Image)(resources.GetObject("pbxAge.Image")));
-            this.pbxAge.Location = new System.Drawing.Point(6, 87);
+            this.pbxAge.Location = new System.Drawing.Point(6, 135);
             this.pbxAge.Name = "pbxAge";
             this.pbxAge.Size = new System.Drawing.Size(39, 40);
             this.pbxAge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -396,7 +353,7 @@
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(132, 95);
+            this.txtAge.Location = new System.Drawing.Point(132, 143);
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(282, 26);
             this.txtAge.TabIndex = 22;
@@ -446,7 +403,6 @@
             this.gbxFind.Controls.Add(this.txtFind);
             this.gbxFind.Controls.Add(this.lblFind);
             this.gbxFind.Controls.Add(this.dgvProd);
-            this.gbxFind.Controls.Add(this.btnFind_Reset);
             this.gbxFind.Controls.Add(this.btnFind);
             this.gbxFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxFind.Location = new System.Drawing.Point(460, 36);
@@ -579,18 +535,6 @@
             this.colPrice.Name = "colPrice";
             this.colPrice.Width = 125;
             // 
-            // btnFind_Reset
-            // 
-            this.btnFind_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind_Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind_Reset.Location = new System.Drawing.Point(396, 78);
-            this.btnFind_Reset.Name = "btnFind_Reset";
-            this.btnFind_Reset.Size = new System.Drawing.Size(98, 33);
-            this.btnFind_Reset.TabIndex = 57;
-            this.btnFind_Reset.Text = "Reset";
-            this.btnFind_Reset.UseVisualStyleBackColor = true;
-            this.btnFind_Reset.Click += new System.EventHandler(this.btnFind_Reset_Click);
-            // 
             // btnFind
             // 
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -655,7 +599,7 @@
             // cmsInfo_tsiMore
             // 
             this.cmsInfo_tsiMore.Name = "cmsInfo_tsiMore";
-            this.cmsInfo_tsiMore.Size = new System.Drawing.Size(180, 22);
+            this.cmsInfo_tsiMore.Size = new System.Drawing.Size(126, 22);
             this.cmsInfo_tsiMore.Text = "More info";
             // 
             // cmsInfo_Less
@@ -675,6 +619,86 @@
             this.cms_dgvProd_tsiAdd.Name = "cms_dgvProd_tsiAdd";
             this.cms_dgvProd_tsiAdd.Size = new System.Drawing.Size(112, 22);
             this.cms_dgvProd_tsiAdd.Text = "Add";
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.Location = new System.Drawing.Point(199, 449);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(98, 33);
+            this.btnConfirm.TabIndex = 53;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(6, 81);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(54, 91);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 20);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Age";
+            // 
+            // rbtnMale
+            // 
+            this.rbtnMale.AutoSize = true;
+            this.rbtnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnMale.Location = new System.Drawing.Point(132, 93);
+            this.rbtnMale.Name = "rbtnMale";
+            this.rbtnMale.Size = new System.Drawing.Size(61, 24);
+            this.rbtnMale.TabIndex = 54;
+            this.rbtnMale.TabStop = true;
+            this.rbtnMale.Text = "Male";
+            this.rbtnMale.UseVisualStyleBackColor = true;
+            // 
+            // rbtnFemale
+            // 
+            this.rbtnFemale.AutoSize = true;
+            this.rbtnFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnFemale.Location = new System.Drawing.Point(210, 93);
+            this.rbtnFemale.Name = "rbtnFemale";
+            this.rbtnFemale.Size = new System.Drawing.Size(80, 24);
+            this.rbtnFemale.TabIndex = 54;
+            this.rbtnFemale.TabStop = true;
+            this.rbtnFemale.Text = "Female";
+            this.rbtnFemale.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(306, 93);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(75, 24);
+            this.radioButton1.TabIndex = 54;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Unisex";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(316, 449);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(98, 33);
+            this.btnCancel.TabIndex = 53;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmProd
             // 
@@ -704,6 +728,7 @@
             this.cmsInfo.ResumeLayout(false);
             this.cmsFind.ResumeLayout(false);
             this.cms_dgvProd.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -730,13 +755,8 @@
         private System.Windows.Forms.ComboBox cbNCC;
         private System.Windows.Forms.Label lblBrand;
         private System.Windows.Forms.PictureBox pbxBrand;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.GroupBox gbxFind;
         private System.Windows.Forms.DataGridView dgvProd;
-        private System.Windows.Forms.Button btnFind_Reset;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Label lblFind;
         private System.Windows.Forms.RadioButton rbtnType;
@@ -770,5 +790,12 @@
         private System.Windows.Forms.ToolStripSeparator cms_dgvProd_Separator;
         private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiReset;
         private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiAdd;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RadioButton rbtnFemale;
+        private System.Windows.Forms.RadioButton rbtnMale;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

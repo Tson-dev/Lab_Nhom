@@ -1,6 +1,6 @@
 ﻿namespace Nhóm1.TSon
 {
-    partial class frmCategory
+    partial class frmType
     {
         /// <summary>
         /// Required designer variable.

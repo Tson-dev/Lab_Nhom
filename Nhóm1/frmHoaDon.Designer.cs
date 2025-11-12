@@ -36,7 +36,6 @@
             this.labelBillList = new System.Windows.Forms.Label();
             this.labelBillDetail = new System.Windows.Forms.Label();
             this.cbLoaiHoaDon = new System.Windows.Forms.ComboBox();
-
             ((System.ComponentModel.ISupportInitialize)(this.pbTaoPhieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTimKiem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
@@ -47,7 +46,7 @@
             // 
             this.pbTaoPhieu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbTaoPhieu.Image = ((System.Drawing.Image)(resources.GetObject("pbTaoPhieu.Image")));
-            this.pbTaoPhieu.Location = new System.Drawing.Point(1372, 48);
+            this.pbTaoPhieu.Location = new System.Drawing.Point(1181, 48);
             this.pbTaoPhieu.Name = "pbTaoPhieu";
             this.pbTaoPhieu.Size = new System.Drawing.Size(36, 29);
             this.pbTaoPhieu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -59,7 +58,7 @@
             // 
             this.pbTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbTimKiem.Image = ((System.Drawing.Image)(resources.GetObject("pbTimKiem.Image")));
-            this.pbTimKiem.Location = new System.Drawing.Point(1304, 48);
+            this.pbTimKiem.Location = new System.Drawing.Point(1113, 48);
             this.pbTimKiem.Name = "pbTimKiem";
             this.pbTimKiem.Size = new System.Drawing.Size(36, 29);
             this.pbTimKiem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -81,7 +80,7 @@
             // 
             this.labelFrom.AutoSize = true;
             this.labelFrom.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.labelFrom.Location = new System.Drawing.Point(311, 54);
+            this.labelFrom.Location = new System.Drawing.Point(120, 54);
             this.labelFrom.Name = "labelFrom";
             this.labelFrom.Size = new System.Drawing.Size(75, 23);
             this.labelFrom.TabIndex = 7;
@@ -91,7 +90,7 @@
             // 
             this.labelTo.AutoSize = true;
             this.labelTo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.labelTo.Location = new System.Drawing.Point(666, 54);
+            this.labelTo.Location = new System.Drawing.Point(475, 54);
             this.labelTo.Name = "labelTo";
             this.labelTo.Size = new System.Drawing.Size(87, 23);
             this.labelTo.TabIndex = 9;
@@ -100,7 +99,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(392, 51);
+            this.dateTimePicker1.Location = new System.Drawing.Point(201, 51);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(251, 30);
             this.dateTimePicker1.TabIndex = 16;
@@ -108,21 +107,10 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dateTimePicker2.Location = new System.Drawing.Point(759, 51);
+            this.dateTimePicker2.Location = new System.Drawing.Point(568, 51);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(251, 30);
             this.dateTimePicker2.TabIndex = 17;
-            // 
-            // cbLoaiHoaDon
-            // 
-            this.cbLoaiHoaDon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLoaiHoaDon.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbLoaiHoaDon.FormattingEnabled = true;
-            this.cbLoaiHoaDon.Location = new System.Drawing.Point(1040, 51);
-            this.cbLoaiHoaDon.Name = "cbLoaiHoaDon";
-            this.cbLoaiHoaDon.Size = new System.Drawing.Size(240, 31);
-            this.cbLoaiHoaDon.TabIndex = 22;
-            this.cbLoaiHoaDon.SelectedIndexChanged += new System.EventHandler(this.cbLoaiHoaDon_SelectedIndexChanged);
             // 
             // dgvBill
             // 
@@ -133,7 +121,7 @@
             this.dgvBill.RowHeadersWidth = 51;
             this.dgvBill.RowTemplate.Height = 24;
             this.dgvBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBill.Size = new System.Drawing.Size(1396, 250);
+            this.dgvBill.Size = new System.Drawing.Size(1235, 250);
             this.dgvBill.TabIndex = 18;
             this.dgvBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBill_CellClick);
             // 
@@ -146,7 +134,7 @@
             this.dgvBillDetail.RowHeadersWidth = 51;
             this.dgvBillDetail.RowTemplate.Height = 24;
             this.dgvBillDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBillDetail.Size = new System.Drawing.Size(1396, 230);
+            this.dgvBillDetail.Size = new System.Drawing.Size(1235, 230);
             this.dgvBillDetail.TabIndex = 19;
             // 
             // labelBillList
@@ -169,11 +157,22 @@
             this.labelBillDetail.TabIndex = 21;
             this.labelBillDetail.Text = "Chi tiết hóa đơn #:";
             // 
+            // cbLoaiHoaDon
+            // 
+            this.cbLoaiHoaDon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLoaiHoaDon.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbLoaiHoaDon.FormattingEnabled = true;
+            this.cbLoaiHoaDon.Location = new System.Drawing.Point(849, 51);
+            this.cbLoaiHoaDon.Name = "cbLoaiHoaDon";
+            this.cbLoaiHoaDon.Size = new System.Drawing.Size(240, 31);
+            this.cbLoaiHoaDon.TabIndex = 22;
+            this.cbLoaiHoaDon.SelectedIndexChanged += new System.EventHandler(this.cbLoaiHoaDon_SelectedIndexChanged);
+            // 
             // frmHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1420, 650);
+            this.ClientSize = new System.Drawing.Size(1260, 650);
             this.Controls.Add(this.cbLoaiHoaDon);
             this.Controls.Add(this.labelBillDetail);
             this.Controls.Add(this.labelBillList);
@@ -196,6 +195,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBillDetail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

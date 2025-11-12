@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace Nhóm1
 {
@@ -18,12 +12,6 @@ namespace Nhóm1
             InitializeComponent();
         }
 
-        string connectionString = @"Data Source=NgocTuan\NGOCTUAN;Initial Catalog=ShoeShop;Integrated Security=True";
-
-        private void lblDangNhap_Click(object sender, EventArgs e)
-        {
-        }
-
         private void lblThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -31,77 +19,84 @@ namespace Nhóm1
 
         private void cbHienThi_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbHienThi.Checked == true)
-            {
-                txtMatKhau.PasswordChar = '\0';
-                txtXacNhan.PasswordChar = '\0';
-            }
-            else
-            {
-                txtMatKhau.PasswordChar = '*';
-                txtXacNhan.PasswordChar = '*';
-
-            }
-        }
-
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            bool hien = cbHienThi.Checked;
+            txtMatKhau.PasswordChar = hien ? '\0' : '*';
+            txtXacNhan.PasswordChar = hien ? '\0' : '*';
         }
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            string id = txtDangNhap1.Text;
-            if (id.Length != 10)
+            string username = txtDangNhap1.Text.Trim();
+            string password = txtMatKhau.Text.Trim();
+            string confirmPassword = txtXacNhan.Text.Trim();
+
+            // Kiểm tra nhập liệu
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("ID phải dài 10 ký tự.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (id.Substring(0, 2) != "AD"
-                && id.Substring(0, 2) != "NV")
-            {
-                MessageBox.Show("ID phải bắt đầu bằng \"AD\" (Cho quản lý) hoặc \"NV\" (Cho nhân viên)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string password = txtMatKhau.Text;
-            string confirmPassword = txtXacNhan.Text;
             if (password != confirmPassword)
             {
                 MessageBox.Show("Mật khẩu xác nhận không khớp.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            // Xác định Role
+            string role = "";
+            if (username.StartsWith("AD", StringComparison.OrdinalIgnoreCase))
+                role = "Admin";
+            else if (username.StartsWith("NV", StringComparison.OrdinalIgnoreCase))
+                role = "Sales";
+            else
+            {
+                MessageBox.Show("Tên đăng nhập phải bắt đầu bằng \"AD\" (Admin) hoặc \"NV\" (Nhân viên).",
+                                "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Thêm dữ liệu vào DB
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 conn.Open();
                 SqlTransaction transaction = conn.BeginTransaction();
 
                 try
                 {
-                    // 1. Insert vào Acc trước
-                    string queryAcc = "INSERT INTO Acc (ID, Pass) VALUES (@ID, @Pass)";
-                    using (SqlCommand cmdAcc = new SqlCommand(queryAcc, conn, transaction))
+                    // 1️⃣ Thêm vào Account
+                    string queryAcc = @"
+                        INSERT INTO Account (Username, Password, Role, Active)
+                        VALUES (@Username, @Password, @Role, 1);
+                        SELECT SCOPE_IDENTITY();";
+                    int newAccountId;
+
+                    using (SqlCommand cmd = new SqlCommand(queryAcc, conn, transaction))
                     {
-                        cmdAcc.Parameters.AddWithValue("@ID", id);
-                        cmdAcc.Parameters.AddWithValue("@Pass", password);
-                        cmdAcc.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.Parameters.AddWithValue("@Role", role);
+                        newAccountId = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
-                    // 2. Insert vào NhanVien sau
-                    string queryNV = "INSERT INTO NhanVien (ID, Name, Gender, BornDate, Addr, SDT, Email, Type) " +
-                                     "VALUES (@ID, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
-                    using (SqlCommand cmdNV = new SqlCommand(queryNV, conn, transaction))
+                    // 2️⃣ Thêm vào Employee (chưa có thông tin chi tiết)
+                    string queryEmp = @"
+                        INSERT INTO Employee (FullName, Gender, BirthDate, Address, Phone, Email, RoleID, AccountID)
+                        VALUES (NULL, NULL, NULL, NULL, NULL, NULL, 
+                            (SELECT ID FROM Role WHERE RoleName = @RoleName), @AccountID)";
+                    using (SqlCommand cmd = new SqlCommand(queryEmp, conn, transaction))
                     {
-                        cmdNV.Parameters.AddWithValue("@ID", id);
-                        cmdNV.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@RoleName", role);
+                        cmd.Parameters.AddWithValue("@AccountID", newAccountId);
+                        cmd.ExecuteNonQuery();
                     }
 
                     transaction.Commit();
 
-                    MessageBox.Show("Tạo tài khoản và nhân viên thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Tạo tài khoản thành công!", "Thành công",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
+
                     frmNhanVien f = new frmNhanVien();
                     f.Show();
                 }
@@ -109,21 +104,12 @@ namespace Nhóm1
                 {
                     transaction.Rollback();
 
-                    if (ex.Number == 2627) // Trùng khóa chính
-                    {
-                        MessageBox.Show("ID đã tồn tại. Vui lòng chọn ID khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    if (ex.Number == 2627 || ex.Number == 2601)
+                        MessageBox.Show("Tên đăng nhập đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
-                    {
-                        MessageBox.Show("Đã xảy ra lỗi khi tạo tài khoản: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                        MessageBox.Show("Lỗi khi tạo tài khoản: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void Tạo_tài_khoản_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

@@ -9,17 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace Nhóm1
 {
     public partial class frmInHoaDon : Form
     {
         private int billID; // Mã hóa đơn được truyền vào
-
-        // ✅ Kết nối đúng với database ShoeShop
-        string connectionString =
-            @"Data Source=NgocTuan\NGOCTUAN;Initial Catalog=ShoeShop;Integrated Security=True;TrustServerCertificate=True";
-
+       
         public frmInHoaDon()
         {
             InitializeComponent();
@@ -42,10 +39,10 @@ namespace Nhóm1
         // ======================================
         private void LoadBillInfo()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 string query = @"
-                    SELECT b.ID, b.Date, b.Total, a.ID AS AccID, a.Pass
+                    SELECT b.ID, b.Date, b.Total, a.ID AS AccID, a.Password
                     FROM dbo.Bill AS b
                     LEFT JOIN dbo.Account AS a ON a.ID = b.AccountID
                     WHERE b.ID = @billID";
@@ -66,13 +63,12 @@ namespace Nhóm1
             }
         }
 
-
         // ======================================
         // 🔹 LOAD CHI TIẾT HÓA ĐƠN
         // ======================================
         private void LoadBillDetail()
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlConnection conn = Connection.GetConnection())
             {
                 string query = @"
                     SELECT i.Name AS [Tên Sản Phẩm],
@@ -99,7 +95,6 @@ namespace Nhóm1
                 dgvChiTiet.Columns["Số Lượng"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
-
 
         // ======================================
         // 🔹 IN HÓA ĐƠN

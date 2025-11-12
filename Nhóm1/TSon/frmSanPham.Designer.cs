@@ -1,6 +1,6 @@
 ﻿namespace Nhóm1
 {
-    partial class FrmSanPham
+    partial class frmProd
     {
         /// <summary>
         /// Required designer variable.
@@ -29,46 +29,45 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSanPham));
-            this.gBThongTinSP = new System.Windows.Forms.GroupBox();
-            this.btnLamMoi = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThemSP = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProd));
+            this.gbxInfo = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.cbNCC = new System.Windows.Forms.ComboBox();
-            this.lblNCC = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.txtGiaBan = new System.Windows.Forms.TextBox();
-            this.lblGiaBan = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.mUDKichThuoc = new System.Windows.Forms.NumericUpDown();
-            this.lblKichThuoc = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.cbLoai = new System.Windows.Forms.ComboBox();
-            this.lblLoai = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.lblAge = new System.Windows.Forms.Label();
-            this.pbxAge = new System.Windows.Forms.PictureBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.pbxName = new System.Windows.Forms.PictureBox();
-            this.lblSanPham = new System.Windows.Forms.Label();
-            this.gBTimSP = new System.Windows.Forms.GroupBox();
-            this.rdTheoLoai = new System.Windows.Forms.RadioButton();
-            this.rdTheoNCC = new System.Windows.Forms.RadioButton();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.lblTimkiem = new System.Windows.Forms.Label();
-            this.dataSanPham = new System.Windows.Forms.DataGridView();
-            this.btnLamMoi1 = new System.Windows.Forms.Button();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.cmsCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsBrand = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsCategory_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsCategory_tsiSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.cmsCategory_tsiOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsBrand_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsBrand_tsiSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.cmsBrand_tsiOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblBrand = new System.Windows.Forms.Label();
+            this.pbxBrand = new System.Windows.Forms.PictureBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.lblGiaBan = new System.Windows.Forms.Label();
+            this.pbxPrice = new System.Windows.Forms.PictureBox();
+            this.nudSize = new System.Windows.Forms.NumericUpDown();
+            this.lblSize = new System.Windows.Forms.Label();
+            this.pbxSize = new System.Windows.Forms.PictureBox();
+            this.cbLoai = new System.Windows.Forms.ComboBox();
+            this.cmsCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsCategory_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsCategory_tsiSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.cmsCategory_tsiOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblLoai = new System.Windows.Forms.Label();
+            this.pbxType = new System.Windows.Forms.PictureBox();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.pbxAge = new System.Windows.Forms.PictureBox();
+            this.txtAge = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.pbxName = new System.Windows.Forms.PictureBox();
+            this.lblProd = new System.Windows.Forms.Label();
+            this.gbxFind = new System.Windows.Forms.GroupBox();
+            this.rbtnType = new System.Windows.Forms.RadioButton();
+            this.rbtnBrand = new System.Windows.Forms.RadioButton();
+            this.txtFind = new System.Windows.Forms.TextBox();
+            this.lblFind = new System.Windows.Forms.Label();
+            this.dgvProd = new System.Windows.Forms.DataGridView();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,395 +76,126 @@
             this.colAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtAge = new System.Windows.Forms.TextBox();
-            this.gBThongTinSP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mUDKichThuoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.btnFind_Reset = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.cmsInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsFind = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cms_dgvProd = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cms_dgvProd_Update = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_dgvProd_tsiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_dgvProd_Separator = new System.Windows.Forms.ToolStripSeparator();
+            this.cms_dgvProd_tsiReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsInfo_tsiMore = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsInfo_Less = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsFind_tsiReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_dgvProd_tsiAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.gbxInfo.SuspendLayout();
+            this.cmsBrand.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxBrand)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxSize)).BeginInit();
+            this.cmsCategory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxName)).BeginInit();
-            this.gBTimSP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSanPham)).BeginInit();
-            this.cmsCategory.SuspendLayout();
-            this.cmsBrand.SuspendLayout();
+            this.gbxFind.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).BeginInit();
+            this.cmsInfo.SuspendLayout();
+            this.cmsFind.SuspendLayout();
+            this.cms_dgvProd.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gBThongTinSP
+            // gbxInfo
             // 
-            this.gBThongTinSP.Controls.Add(this.btnLamMoi);
-            this.gBThongTinSP.Controls.Add(this.btnXoa);
-            this.gBThongTinSP.Controls.Add(this.btnSua);
-            this.gBThongTinSP.Controls.Add(this.btnThemSP);
-            this.gBThongTinSP.Controls.Add(this.cbNCC);
-            this.gBThongTinSP.Controls.Add(this.lblNCC);
-            this.gBThongTinSP.Controls.Add(this.pictureBox7);
-            this.gBThongTinSP.Controls.Add(this.txtGiaBan);
-            this.gBThongTinSP.Controls.Add(this.lblGiaBan);
-            this.gBThongTinSP.Controls.Add(this.pictureBox6);
-            this.gBThongTinSP.Controls.Add(this.mUDKichThuoc);
-            this.gBThongTinSP.Controls.Add(this.lblKichThuoc);
-            this.gBThongTinSP.Controls.Add(this.pictureBox2);
-            this.gBThongTinSP.Controls.Add(this.cbLoai);
-            this.gBThongTinSP.Controls.Add(this.lblLoai);
-            this.gBThongTinSP.Controls.Add(this.pictureBox4);
-            this.gBThongTinSP.Controls.Add(this.lblAge);
-            this.gBThongTinSP.Controls.Add(this.pbxAge);
-            this.gBThongTinSP.Controls.Add(this.txtAge);
-            this.gBThongTinSP.Controls.Add(this.txtName);
-            this.gBThongTinSP.Controls.Add(this.lblName);
-            this.gBThongTinSP.Controls.Add(this.pbxName);
-            this.gBThongTinSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBThongTinSP.Location = new System.Drawing.Point(12, 36);
-            this.gBThongTinSP.Name = "gBThongTinSP";
-            this.gBThongTinSP.Size = new System.Drawing.Size(442, 521);
-            this.gBThongTinSP.TabIndex = 0;
-            this.gBThongTinSP.TabStop = false;
-            this.gBThongTinSP.Text = "Thông tin sản phẩm";
-            this.gBThongTinSP.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.gbxInfo.ContextMenuStrip = this.cmsInfo;
+            this.gbxInfo.Controls.Add(this.btnReset);
+            this.gbxInfo.Controls.Add(this.btnDelete);
+            this.gbxInfo.Controls.Add(this.btnUpdate);
+            this.gbxInfo.Controls.Add(this.btnAdd);
+            this.gbxInfo.Controls.Add(this.cbNCC);
+            this.gbxInfo.Controls.Add(this.lblBrand);
+            this.gbxInfo.Controls.Add(this.pbxBrand);
+            this.gbxInfo.Controls.Add(this.txtPrice);
+            this.gbxInfo.Controls.Add(this.lblGiaBan);
+            this.gbxInfo.Controls.Add(this.pbxPrice);
+            this.gbxInfo.Controls.Add(this.nudSize);
+            this.gbxInfo.Controls.Add(this.lblSize);
+            this.gbxInfo.Controls.Add(this.pbxSize);
+            this.gbxInfo.Controls.Add(this.cbLoai);
+            this.gbxInfo.Controls.Add(this.lblLoai);
+            this.gbxInfo.Controls.Add(this.pbxType);
+            this.gbxInfo.Controls.Add(this.lblAge);
+            this.gbxInfo.Controls.Add(this.pbxAge);
+            this.gbxInfo.Controls.Add(this.txtAge);
+            this.gbxInfo.Controls.Add(this.txtName);
+            this.gbxInfo.Controls.Add(this.lblName);
+            this.gbxInfo.Controls.Add(this.pbxName);
+            this.gbxInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxInfo.Location = new System.Drawing.Point(12, 36);
+            this.gbxInfo.Name = "gbxInfo";
+            this.gbxInfo.Size = new System.Drawing.Size(442, 521);
+            this.gbxInfo.TabIndex = 0;
+            this.gbxInfo.TabStop = false;
+            this.gbxInfo.Text = "Information";
+            this.gbxInfo.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // btnLamMoi
+            // btnReset
             // 
-            this.btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.Location = new System.Drawing.Point(153, 458);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(98, 33);
-            this.btnLamMoi.TabIndex = 53;
-            this.btnLamMoi.Text = "Làm mới";
-            this.btnLamMoi.UseVisualStyleBackColor = true;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(153, 458);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(98, 33);
+            this.btnReset.TabIndex = 53;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
-            // btnXoa
+            // btnDelete
             // 
-            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(281, 410);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(98, 33);
-            this.btnXoa.TabIndex = 52;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(281, 410);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(98, 33);
+            this.btnDelete.TabIndex = 52;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnSua
+            // btnUpdate
             // 
-            this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(153, 410);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(98, 33);
-            this.btnSua.TabIndex = 51;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(153, 410);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(98, 33);
+            this.btnUpdate.TabIndex = 51;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnThemSP
+            // btnAdd
             // 
-            this.btnThemSP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThemSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemSP.Location = new System.Drawing.Point(19, 410);
-            this.btnThemSP.Name = "btnThemSP";
-            this.btnThemSP.Size = new System.Drawing.Size(98, 33);
-            this.btnThemSP.TabIndex = 50;
-            this.btnThemSP.Text = "Thêm ";
-            this.btnThemSP.UseVisualStyleBackColor = true;
-            this.btnThemSP.Click += new System.EventHandler(this.btnThemSP_Click);
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(19, 410);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(98, 33);
+            this.btnAdd.TabIndex = 50;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // cbNCC
             // 
             this.cbNCC.ContextMenuStrip = this.cmsBrand;
             this.cbNCC.FormattingEnabled = true;
-            this.cbNCC.Location = new System.Drawing.Point(167, 337);
+            this.cbNCC.Location = new System.Drawing.Point(132, 337);
             this.cbNCC.Name = "cbNCC";
-            this.cbNCC.Size = new System.Drawing.Size(247, 28);
+            this.cbNCC.Size = new System.Drawing.Size(282, 28);
             this.cbNCC.TabIndex = 49;
-            // 
-            // lblNCC
-            // 
-            this.lblNCC.AutoSize = true;
-            this.lblNCC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNCC.Location = new System.Drawing.Point(52, 340);
-            this.lblNCC.Name = "lblNCC";
-            this.lblNCC.Size = new System.Drawing.Size(107, 20);
-            this.lblNCC.TabIndex = 48;
-            this.lblNCC.Text = "Nhà cung cấp";
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(6, 330);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(39, 37);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 47;
-            this.pictureBox7.TabStop = false;
-            // 
-            // txtGiaBan
-            // 
-            this.txtGiaBan.Location = new System.Drawing.Point(167, 275);
-            this.txtGiaBan.Name = "txtGiaBan";
-            this.txtGiaBan.Size = new System.Drawing.Size(247, 26);
-            this.txtGiaBan.TabIndex = 46;
-            // 
-            // lblGiaBan
-            // 
-            this.lblGiaBan.AutoSize = true;
-            this.lblGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGiaBan.Location = new System.Drawing.Point(52, 278);
-            this.lblGiaBan.Name = "lblGiaBan";
-            this.lblGiaBan.Size = new System.Drawing.Size(65, 20);
-            this.lblGiaBan.TabIndex = 45;
-            this.lblGiaBan.Text = "Giá bán";
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(6, 268);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(39, 40);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 44;
-            this.pictureBox6.TabStop = false;
-            // 
-            // mUDKichThuoc
-            // 
-            this.mUDKichThuoc.Location = new System.Drawing.Point(167, 212);
-            this.mUDKichThuoc.Maximum = new decimal(new int[] {
-            45,
-            0,
-            0,
-            0});
-            this.mUDKichThuoc.Minimum = new decimal(new int[] {
-            35,
-            0,
-            0,
-            0});
-            this.mUDKichThuoc.Name = "mUDKichThuoc";
-            this.mUDKichThuoc.Size = new System.Drawing.Size(114, 26);
-            this.mUDKichThuoc.TabIndex = 40;
-            this.mUDKichThuoc.Value = new decimal(new int[] {
-            35,
-            0,
-            0,
-            0});
-            // 
-            // lblKichThuoc
-            // 
-            this.lblKichThuoc.AutoSize = true;
-            this.lblKichThuoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKichThuoc.Location = new System.Drawing.Point(52, 213);
-            this.lblKichThuoc.Name = "lblKichThuoc";
-            this.lblKichThuoc.Size = new System.Drawing.Size(83, 20);
-            this.lblKichThuoc.TabIndex = 39;
-            this.lblKichThuoc.Text = "Kích thước";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 204);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 38;
-            this.pictureBox2.TabStop = false;
-            // 
-            // cbLoai
-            // 
-            this.cbLoai.ContextMenuStrip = this.cmsCategory;
-            this.cbLoai.FormattingEnabled = true;
-            this.cbLoai.Location = new System.Drawing.Point(167, 153);
-            this.cbLoai.Name = "cbLoai";
-            this.cbLoai.Size = new System.Drawing.Size(247, 28);
-            this.cbLoai.TabIndex = 37;
-            // 
-            // lblLoai
-            // 
-            this.lblLoai.AutoSize = true;
-            this.lblLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoai.Location = new System.Drawing.Point(51, 155);
-            this.lblLoai.Name = "lblLoai";
-            this.lblLoai.Size = new System.Drawing.Size(43, 20);
-            this.lblLoai.TabIndex = 36;
-            this.lblLoai.Text = "Loại ";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(6, 146);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(39, 38);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 35;
-            this.pictureBox4.TabStop = false;
-            // 
-            // lblAge
-            // 
-            this.lblAge.AutoSize = true;
-            this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAge.Location = new System.Drawing.Point(52, 98);
-            this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(38, 20);
-            this.lblAge.TabIndex = 33;
-            this.lblAge.Text = "Age";
-            // 
-            // pbxAge
-            // 
-            this.pbxAge.Image = ((System.Drawing.Image)(resources.GetObject("pbxAge.Image")));
-            this.pbxAge.Location = new System.Drawing.Point(6, 87);
-            this.pbxAge.Name = "pbxAge";
-            this.pbxAge.Size = new System.Drawing.Size(39, 40);
-            this.pbxAge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxAge.TabIndex = 32;
-            this.pbxAge.TabStop = false;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(167, 40);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(247, 26);
-            this.txtName.TabIndex = 22;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(51, 43);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(51, 20);
-            this.lblName.TabIndex = 21;
-            this.lblName.Text = "Name";
-            // 
-            // pbxName
-            // 
-            this.pbxName.Image = ((System.Drawing.Image)(resources.GetObject("pbxName.Image")));
-            this.pbxName.Location = new System.Drawing.Point(6, 37);
-            this.pbxName.Name = "pbxName";
-            this.pbxName.Size = new System.Drawing.Size(39, 32);
-            this.pbxName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxName.TabIndex = 20;
-            this.pbxName.TabStop = false;
-            // 
-            // lblSanPham
-            // 
-            this.lblSanPham.AutoSize = true;
-            this.lblSanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSanPham.Location = new System.Drawing.Point(405, 9);
-            this.lblSanPham.Name = "lblSanPham";
-            this.lblSanPham.Size = new System.Drawing.Size(105, 24);
-            this.lblSanPham.TabIndex = 1;
-            this.lblSanPham.Text = "Sản Phẩm";
-            // 
-            // gBTimSP
-            // 
-            this.gBTimSP.Controls.Add(this.rdTheoLoai);
-            this.gBTimSP.Controls.Add(this.rdTheoNCC);
-            this.gBTimSP.Controls.Add(this.txtTimKiem);
-            this.gBTimSP.Controls.Add(this.lblTimkiem);
-            this.gBTimSP.Controls.Add(this.dataSanPham);
-            this.gBTimSP.Controls.Add(this.btnLamMoi1);
-            this.gBTimSP.Controls.Add(this.btnTimKiem);
-            this.gBTimSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBTimSP.Location = new System.Drawing.Point(460, 36);
-            this.gBTimSP.Name = "gBTimSP";
-            this.gBTimSP.Size = new System.Drawing.Size(534, 521);
-            this.gBTimSP.TabIndex = 2;
-            this.gBTimSP.TabStop = false;
-            this.gBTimSP.Text = "Tìm sản phẩm";
-            // 
-            // rdTheoLoai
-            // 
-            this.rdTheoLoai.AutoSize = true;
-            this.rdTheoLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTheoLoai.Location = new System.Drawing.Point(258, 87);
-            this.rdTheoLoai.Name = "rdTheoLoai";
-            this.rdTheoLoai.Size = new System.Drawing.Size(97, 24);
-            this.rdTheoLoai.TabIndex = 62;
-            this.rdTheoLoai.Text = "Theo Loại";
-            this.rdTheoLoai.UseVisualStyleBackColor = true;
-            // 
-            // rdTheoNCC
-            // 
-            this.rdTheoNCC.AutoSize = true;
-            this.rdTheoNCC.Checked = true;
-            this.rdTheoNCC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdTheoNCC.Location = new System.Drawing.Point(68, 87);
-            this.rdTheoNCC.Name = "rdTheoNCC";
-            this.rdTheoNCC.Size = new System.Drawing.Size(163, 24);
-            this.rdTheoNCC.TabIndex = 61;
-            this.rdTheoNCC.TabStop = true;
-            this.rdTheoNCC.Text = "Theo nhà cung cấp";
-            this.rdTheoNCC.UseVisualStyleBackColor = true;
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Location = new System.Drawing.Point(103, 40);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(247, 26);
-            this.txtTimKiem.TabIndex = 60;
-            // 
-            // lblTimkiem
-            // 
-            this.lblTimkiem.AutoSize = true;
-            this.lblTimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimkiem.Location = new System.Drawing.Point(6, 43);
-            this.lblTimkiem.Name = "lblTimkiem";
-            this.lblTimkiem.Size = new System.Drawing.Size(71, 20);
-            this.lblTimkiem.TabIndex = 59;
-            this.lblTimkiem.Text = "Tìm kiếm";
-            // 
-            // dataSanPham
-            // 
-            this.dataSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataSanPham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.ColName,
-            this.colBrand,
-            this.ColType,
-            this.colSize,
-            this.colAge,
-            this.colStock,
-            this.colPrice});
-            this.dataSanPham.Location = new System.Drawing.Point(6, 117);
-            this.dataSanPham.Name = "dataSanPham";
-            this.dataSanPham.RowHeadersWidth = 51;
-            this.dataSanPham.Size = new System.Drawing.Size(518, 398);
-            this.dataSanPham.TabIndex = 58;
-            this.dataSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSanPham_CellContentClick);
-            // 
-            // btnLamMoi1
-            // 
-            this.btnLamMoi1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLamMoi1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi1.Location = new System.Drawing.Point(396, 78);
-            this.btnLamMoi1.Name = "btnLamMoi1";
-            this.btnLamMoi1.Size = new System.Drawing.Size(98, 33);
-            this.btnLamMoi1.TabIndex = 57;
-            this.btnLamMoi1.Text = "Làm mới";
-            this.btnLamMoi1.UseVisualStyleBackColor = true;
-            this.btnLamMoi1.Click += new System.EventHandler(this.btnLamMoi1_Click);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.Location = new System.Drawing.Point(396, 38);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(98, 33);
-            this.btnTimKiem.TabIndex = 56;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // cmsCategory
-            // 
-            this.cmsCategory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsCategory_tsiAdd,
-            this.cmsCategory_tsiSeparator,
-            this.cmsCategory_tsiOpen});
-            this.cmsCategory.Name = "cmsCategory";
-            this.cmsCategory.Size = new System.Drawing.Size(155, 54);
             // 
             // cmsBrand
             // 
@@ -475,25 +205,6 @@
             this.cmsBrand_tsiOpen});
             this.cmsBrand.Name = "cmsBrand";
             this.cmsBrand.Size = new System.Drawing.Size(138, 54);
-            // 
-            // cmsCategory_tsiAdd
-            // 
-            this.cmsCategory_tsiAdd.Name = "cmsCategory_tsiAdd";
-            this.cmsCategory_tsiAdd.Size = new System.Drawing.Size(154, 22);
-            this.cmsCategory_tsiAdd.Text = "Add";
-            this.cmsCategory_tsiAdd.Click += new System.EventHandler(this.cmsCategory_tsiAdd_Click);
-            // 
-            // cmsCategory_tsiSeparator
-            // 
-            this.cmsCategory_tsiSeparator.Name = "cmsCategory_tsiSeparator";
-            this.cmsCategory_tsiSeparator.Size = new System.Drawing.Size(151, 6);
-            // 
-            // cmsCategory_tsiOpen
-            // 
-            this.cmsCategory_tsiOpen.Name = "cmsCategory_tsiOpen";
-            this.cmsCategory_tsiOpen.Size = new System.Drawing.Size(154, 22);
-            this.cmsCategory_tsiOpen.Text = "Open Category";
-            this.cmsCategory_tsiOpen.Click += new System.EventHandler(this.cmsCategory_tsiOpen_Click);
             // 
             // cmsBrand_tsiAdd
             // 
@@ -516,6 +227,295 @@
             this.cmsBrand_tsiOpen.Size = new System.Drawing.Size(137, 22);
             this.cmsBrand_tsiOpen.Text = "Open Brand";
             this.cmsBrand_tsiOpen.Click += new System.EventHandler(this.cmsBrand_tsiOpen_Click);
+            // 
+            // lblBrand
+            // 
+            this.lblBrand.AutoSize = true;
+            this.lblBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrand.Location = new System.Drawing.Point(52, 340);
+            this.lblBrand.Name = "lblBrand";
+            this.lblBrand.Size = new System.Drawing.Size(52, 20);
+            this.lblBrand.TabIndex = 48;
+            this.lblBrand.Text = "Brand";
+            // 
+            // pbxBrand
+            // 
+            this.pbxBrand.Image = ((System.Drawing.Image)(resources.GetObject("pbxBrand.Image")));
+            this.pbxBrand.Location = new System.Drawing.Point(6, 330);
+            this.pbxBrand.Name = "pbxBrand";
+            this.pbxBrand.Size = new System.Drawing.Size(39, 37);
+            this.pbxBrand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxBrand.TabIndex = 47;
+            this.pbxBrand.TabStop = false;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(132, 275);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(282, 26);
+            this.txtPrice.TabIndex = 46;
+            // 
+            // lblGiaBan
+            // 
+            this.lblGiaBan.AutoSize = true;
+            this.lblGiaBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGiaBan.Location = new System.Drawing.Point(52, 278);
+            this.lblGiaBan.Name = "lblGiaBan";
+            this.lblGiaBan.Size = new System.Drawing.Size(44, 20);
+            this.lblGiaBan.TabIndex = 45;
+            this.lblGiaBan.Text = "Price";
+            // 
+            // pbxPrice
+            // 
+            this.pbxPrice.Image = ((System.Drawing.Image)(resources.GetObject("pbxPrice.Image")));
+            this.pbxPrice.Location = new System.Drawing.Point(6, 268);
+            this.pbxPrice.Name = "pbxPrice";
+            this.pbxPrice.Size = new System.Drawing.Size(39, 40);
+            this.pbxPrice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxPrice.TabIndex = 44;
+            this.pbxPrice.TabStop = false;
+            // 
+            // nudSize
+            // 
+            this.nudSize.Location = new System.Drawing.Point(132, 212);
+            this.nudSize.Maximum = new decimal(new int[] {
+            45,
+            0,
+            0,
+            0});
+            this.nudSize.Minimum = new decimal(new int[] {
+            35,
+            0,
+            0,
+            0});
+            this.nudSize.Name = "nudSize";
+            this.nudSize.Size = new System.Drawing.Size(149, 26);
+            this.nudSize.TabIndex = 40;
+            this.nudSize.Value = new decimal(new int[] {
+            35,
+            0,
+            0,
+            0});
+            // 
+            // lblSize
+            // 
+            this.lblSize.AutoSize = true;
+            this.lblSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSize.Location = new System.Drawing.Point(52, 213);
+            this.lblSize.Name = "lblSize";
+            this.lblSize.Size = new System.Drawing.Size(40, 20);
+            this.lblSize.TabIndex = 39;
+            this.lblSize.Text = "Size";
+            // 
+            // pbxSize
+            // 
+            this.pbxSize.Image = ((System.Drawing.Image)(resources.GetObject("pbxSize.Image")));
+            this.pbxSize.Location = new System.Drawing.Point(6, 204);
+            this.pbxSize.Name = "pbxSize";
+            this.pbxSize.Size = new System.Drawing.Size(39, 38);
+            this.pbxSize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxSize.TabIndex = 38;
+            this.pbxSize.TabStop = false;
+            // 
+            // cbLoai
+            // 
+            this.cbLoai.ContextMenuStrip = this.cmsCategory;
+            this.cbLoai.FormattingEnabled = true;
+            this.cbLoai.Location = new System.Drawing.Point(132, 153);
+            this.cbLoai.Name = "cbLoai";
+            this.cbLoai.Size = new System.Drawing.Size(282, 28);
+            this.cbLoai.TabIndex = 37;
+            // 
+            // cmsCategory
+            // 
+            this.cmsCategory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsCategory_tsiAdd,
+            this.cmsCategory_tsiSeparator,
+            this.cmsCategory_tsiOpen});
+            this.cmsCategory.Name = "cmsCategory";
+            this.cmsCategory.Size = new System.Drawing.Size(155, 54);
+            // 
+            // cmsCategory_tsiAdd
+            // 
+            this.cmsCategory_tsiAdd.Name = "cmsCategory_tsiAdd";
+            this.cmsCategory_tsiAdd.Size = new System.Drawing.Size(154, 22);
+            this.cmsCategory_tsiAdd.Text = "Add";
+            this.cmsCategory_tsiAdd.Click += new System.EventHandler(this.cmsCategory_tsiAdd_Click);
+            // 
+            // cmsCategory_tsiSeparator
+            // 
+            this.cmsCategory_tsiSeparator.Name = "cmsCategory_tsiSeparator";
+            this.cmsCategory_tsiSeparator.Size = new System.Drawing.Size(151, 6);
+            // 
+            // cmsCategory_tsiOpen
+            // 
+            this.cmsCategory_tsiOpen.Name = "cmsCategory_tsiOpen";
+            this.cmsCategory_tsiOpen.Size = new System.Drawing.Size(154, 22);
+            this.cmsCategory_tsiOpen.Text = "Open Category";
+            this.cmsCategory_tsiOpen.Click += new System.EventHandler(this.cmsCategory_tsiOpen_Click);
+            // 
+            // lblLoai
+            // 
+            this.lblLoai.AutoSize = true;
+            this.lblLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoai.Location = new System.Drawing.Point(51, 155);
+            this.lblLoai.Name = "lblLoai";
+            this.lblLoai.Size = new System.Drawing.Size(43, 20);
+            this.lblLoai.TabIndex = 36;
+            this.lblLoai.Text = "Type";
+            // 
+            // pbxType
+            // 
+            this.pbxType.Image = ((System.Drawing.Image)(resources.GetObject("pbxType.Image")));
+            this.pbxType.Location = new System.Drawing.Point(6, 146);
+            this.pbxType.Name = "pbxType";
+            this.pbxType.Size = new System.Drawing.Size(39, 38);
+            this.pbxType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxType.TabIndex = 35;
+            this.pbxType.TabStop = false;
+            // 
+            // lblAge
+            // 
+            this.lblAge.AutoSize = true;
+            this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAge.Location = new System.Drawing.Point(52, 98);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(38, 20);
+            this.lblAge.TabIndex = 33;
+            this.lblAge.Text = "Age";
+            // 
+            // pbxAge
+            // 
+            this.pbxAge.Image = ((System.Drawing.Image)(resources.GetObject("pbxAge.Image")));
+            this.pbxAge.Location = new System.Drawing.Point(6, 87);
+            this.pbxAge.Name = "pbxAge";
+            this.pbxAge.Size = new System.Drawing.Size(39, 40);
+            this.pbxAge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxAge.TabIndex = 32;
+            this.pbxAge.TabStop = false;
+            // 
+            // txtAge
+            // 
+            this.txtAge.Location = new System.Drawing.Point(132, 95);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(282, 26);
+            this.txtAge.TabIndex = 22;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(132, 40);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(282, 26);
+            this.txtName.TabIndex = 22;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(51, 43);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(51, 20);
+            this.lblName.TabIndex = 21;
+            this.lblName.Text = "Name";
+            // 
+            // pbxName
+            // 
+            this.pbxName.Image = ((System.Drawing.Image)(resources.GetObject("pbxName.Image")));
+            this.pbxName.Location = new System.Drawing.Point(6, 37);
+            this.pbxName.Name = "pbxName";
+            this.pbxName.Size = new System.Drawing.Size(39, 32);
+            this.pbxName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxName.TabIndex = 20;
+            this.pbxName.TabStop = false;
+            // 
+            // lblProd
+            // 
+            this.lblProd.AutoSize = true;
+            this.lblProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProd.Location = new System.Drawing.Point(405, 9);
+            this.lblProd.Name = "lblProd";
+            this.lblProd.Size = new System.Drawing.Size(82, 24);
+            this.lblProd.TabIndex = 1;
+            this.lblProd.Text = "Product";
+            // 
+            // gbxFind
+            // 
+            this.gbxFind.ContextMenuStrip = this.cmsFind;
+            this.gbxFind.Controls.Add(this.rbtnType);
+            this.gbxFind.Controls.Add(this.rbtnBrand);
+            this.gbxFind.Controls.Add(this.txtFind);
+            this.gbxFind.Controls.Add(this.lblFind);
+            this.gbxFind.Controls.Add(this.dgvProd);
+            this.gbxFind.Controls.Add(this.btnFind_Reset);
+            this.gbxFind.Controls.Add(this.btnFind);
+            this.gbxFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxFind.Location = new System.Drawing.Point(460, 36);
+            this.gbxFind.Name = "gbxFind";
+            this.gbxFind.Size = new System.Drawing.Size(534, 521);
+            this.gbxFind.TabIndex = 2;
+            this.gbxFind.TabStop = false;
+            this.gbxFind.Text = "Find";
+            // 
+            // rbtnType
+            // 
+            this.rbtnType.AutoSize = true;
+            this.rbtnType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnType.Location = new System.Drawing.Point(184, 81);
+            this.rbtnType.Name = "rbtnType";
+            this.rbtnType.Size = new System.Drawing.Size(61, 24);
+            this.rbtnType.TabIndex = 62;
+            this.rbtnType.Text = "Type";
+            this.rbtnType.UseVisualStyleBackColor = true;
+            // 
+            // rbtnBrand
+            // 
+            this.rbtnBrand.AutoSize = true;
+            this.rbtnBrand.Checked = true;
+            this.rbtnBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnBrand.Location = new System.Drawing.Point(68, 81);
+            this.rbtnBrand.Name = "rbtnBrand";
+            this.rbtnBrand.Size = new System.Drawing.Size(92, 24);
+            this.rbtnBrand.TabIndex = 61;
+            this.rbtnBrand.TabStop = true;
+            this.rbtnBrand.Text = "By Brand";
+            this.rbtnBrand.UseVisualStyleBackColor = true;
+            // 
+            // txtFind
+            // 
+            this.txtFind.Location = new System.Drawing.Point(68, 40);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(268, 26);
+            this.txtFind.TabIndex = 60;
+            // 
+            // lblFind
+            // 
+            this.lblFind.AutoSize = true;
+            this.lblFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFind.Location = new System.Drawing.Point(10, 43);
+            this.lblFind.Name = "lblFind";
+            this.lblFind.Size = new System.Drawing.Size(40, 20);
+            this.lblFind.TabIndex = 59;
+            this.lblFind.Text = "Find";
+            // 
+            // dgvProd
+            // 
+            this.dgvProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colID,
+            this.ColName,
+            this.colBrand,
+            this.ColType,
+            this.colSize,
+            this.colAge,
+            this.colStock,
+            this.colPrice});
+            this.dgvProd.ContextMenuStrip = this.cms_dgvProd;
+            this.dgvProd.Location = new System.Drawing.Point(6, 117);
+            this.dgvProd.Name = "dgvProd";
+            this.dgvProd.RowHeadersWidth = 51;
+            this.dgvProd.Size = new System.Drawing.Size(518, 398);
+            this.dgvProd.TabIndex = 58;
+            this.dgvProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProd_CellContentClick);
             // 
             // colID
             // 
@@ -579,39 +579,131 @@
             this.colPrice.Name = "colPrice";
             this.colPrice.Width = 125;
             // 
-            // txtAge
+            // btnFind_Reset
             // 
-            this.txtAge.Location = new System.Drawing.Point(167, 95);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(247, 26);
-            this.txtAge.TabIndex = 22;
-            this.txtAge.TextChanged += new System.EventHandler(this.txtAge_TextChanged);
+            this.btnFind_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind_Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFind_Reset.Location = new System.Drawing.Point(396, 78);
+            this.btnFind_Reset.Name = "btnFind_Reset";
+            this.btnFind_Reset.Size = new System.Drawing.Size(98, 33);
+            this.btnFind_Reset.TabIndex = 57;
+            this.btnFind_Reset.Text = "Reset";
+            this.btnFind_Reset.UseVisualStyleBackColor = true;
+            this.btnFind_Reset.Click += new System.EventHandler(this.btnFind_Reset_Click);
             // 
-            // FrmSanPham
+            // btnFind
+            // 
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFind.Location = new System.Drawing.Point(396, 38);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(98, 33);
+            this.btnFind.TabIndex = 56;
+            this.btnFind.Text = "Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // cmsInfo
+            // 
+            this.cmsInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsInfo_tsiMore,
+            this.cmsInfo_Less});
+            this.cmsInfo.Name = "contextMenuStrip1";
+            this.cmsInfo.Size = new System.Drawing.Size(127, 48);
+            // 
+            // cmsFind
+            // 
+            this.cmsFind.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsFind_tsiReset});
+            this.cmsFind.Name = "contextMenuStrip2";
+            this.cmsFind.Size = new System.Drawing.Size(103, 26);
+            // 
+            // cms_dgvProd
+            // 
+            this.cms_dgvProd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cms_dgvProd_tsiAdd,
+            this.cms_dgvProd_Update,
+            this.cms_dgvProd_tsiDelete,
+            this.cms_dgvProd_Separator,
+            this.cms_dgvProd_tsiReset});
+            this.cms_dgvProd.Name = "cms_dgvProd";
+            this.cms_dgvProd.Size = new System.Drawing.Size(113, 98);
+            // 
+            // cms_dgvProd_Update
+            // 
+            this.cms_dgvProd_Update.Name = "cms_dgvProd_Update";
+            this.cms_dgvProd_Update.Size = new System.Drawing.Size(112, 22);
+            this.cms_dgvProd_Update.Text = "Update";
+            // 
+            // cms_dgvProd_tsiDelete
+            // 
+            this.cms_dgvProd_tsiDelete.Name = "cms_dgvProd_tsiDelete";
+            this.cms_dgvProd_tsiDelete.Size = new System.Drawing.Size(112, 22);
+            this.cms_dgvProd_tsiDelete.Text = "Delete";
+            // 
+            // cms_dgvProd_Separator
+            // 
+            this.cms_dgvProd_Separator.Name = "cms_dgvProd_Separator";
+            this.cms_dgvProd_Separator.Size = new System.Drawing.Size(109, 6);
+            // 
+            // cms_dgvProd_tsiReset
+            // 
+            this.cms_dgvProd_tsiReset.Name = "cms_dgvProd_tsiReset";
+            this.cms_dgvProd_tsiReset.Size = new System.Drawing.Size(112, 22);
+            this.cms_dgvProd_tsiReset.Text = "Reset";
+            // 
+            // cmsInfo_tsiMore
+            // 
+            this.cmsInfo_tsiMore.Name = "cmsInfo_tsiMore";
+            this.cmsInfo_tsiMore.Size = new System.Drawing.Size(180, 22);
+            this.cmsInfo_tsiMore.Text = "More info";
+            // 
+            // cmsInfo_Less
+            // 
+            this.cmsInfo_Less.Name = "cmsInfo_Less";
+            this.cmsInfo_Less.Size = new System.Drawing.Size(126, 22);
+            this.cmsInfo_Less.Text = "Less info";
+            // 
+            // cmsFind_tsiReset
+            // 
+            this.cmsFind_tsiReset.Name = "cmsFind_tsiReset";
+            this.cmsFind_tsiReset.Size = new System.Drawing.Size(102, 22);
+            this.cmsFind_tsiReset.Text = "Reset";
+            // 
+            // cms_dgvProd_tsiAdd
+            // 
+            this.cms_dgvProd_tsiAdd.Name = "cms_dgvProd_tsiAdd";
+            this.cms_dgvProd_tsiAdd.Size = new System.Drawing.Size(112, 22);
+            this.cms_dgvProd_tsiAdd.Text = "Add";
+            // 
+            // frmProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 590);
-            this.Controls.Add(this.gBTimSP);
-            this.Controls.Add(this.lblSanPham);
-            this.Controls.Add(this.gBThongTinSP);
-            this.Name = "FrmSanPham";
-            this.Text = "Sản Phẩm";
-            this.Load += new System.EventHandler(this.FrmSanPham_Load);
-            this.gBThongTinSP.ResumeLayout(false);
-            this.gBThongTinSP.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mUDKichThuoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.Controls.Add(this.gbxFind);
+            this.Controls.Add(this.lblProd);
+            this.Controls.Add(this.gbxInfo);
+            this.Name = "frmProd";
+            this.Text = "Product";
+            this.Load += new System.EventHandler(this.frmProduct_Load);
+            this.gbxInfo.ResumeLayout(false);
+            this.gbxInfo.PerformLayout();
+            this.cmsBrand.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxBrand)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxSize)).EndInit();
+            this.cmsCategory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxName)).EndInit();
-            this.gBTimSP.ResumeLayout(false);
-            this.gBTimSP.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSanPham)).EndInit();
-            this.cmsCategory.ResumeLayout(false);
-            this.cmsBrand.ResumeLayout(false);
+            this.gbxFind.ResumeLayout(false);
+            this.gbxFind.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).EndInit();
+            this.cmsInfo.ResumeLayout(false);
+            this.cmsFind.ResumeLayout(false);
+            this.cms_dgvProd.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -619,37 +711,37 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gBThongTinSP;
-        private System.Windows.Forms.Label lblSanPham;
+        private System.Windows.Forms.GroupBox gbxInfo;
+        private System.Windows.Forms.Label lblProd;
         private System.Windows.Forms.PictureBox pbxName;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.PictureBox pbxAge;
         private System.Windows.Forms.Label lblAge;
-        private System.Windows.Forms.Label lblKichThuoc;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lblSize;
+        private System.Windows.Forms.PictureBox pbxSize;
         private System.Windows.Forms.ComboBox cbLoai;
         private System.Windows.Forms.Label lblLoai;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.NumericUpDown mUDKichThuoc;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.TextBox txtGiaBan;
+        private System.Windows.Forms.PictureBox pbxType;
+        private System.Windows.Forms.NumericUpDown nudSize;
+        private System.Windows.Forms.PictureBox pbxPrice;
+        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label lblGiaBan;
         private System.Windows.Forms.ComboBox cbNCC;
-        private System.Windows.Forms.Label lblNCC;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Button btnThemSP;
-        private System.Windows.Forms.Button btnLamMoi;
-        private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.GroupBox gBTimSP;
-        private System.Windows.Forms.DataGridView dataSanPham;
-        private System.Windows.Forms.Button btnLamMoi1;
-        private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.Label lblTimkiem;
-        private System.Windows.Forms.RadioButton rdTheoLoai;
-        private System.Windows.Forms.RadioButton rdTheoNCC;
-        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.Label lblBrand;
+        private System.Windows.Forms.PictureBox pbxBrand;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.GroupBox gbxFind;
+        private System.Windows.Forms.DataGridView dgvProd;
+        private System.Windows.Forms.Button btnFind_Reset;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.Label lblFind;
+        private System.Windows.Forms.RadioButton rbtnType;
+        private System.Windows.Forms.RadioButton rbtnBrand;
+        private System.Windows.Forms.TextBox txtFind;
         private System.Windows.Forms.ContextMenuStrip cmsBrand;
         private System.Windows.Forms.ToolStripMenuItem cmsBrand_tsiAdd;
         private System.Windows.Forms.ToolStripSeparator cmsBrand_tsiSeparator;
@@ -667,5 +759,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colAge;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
+        private System.Windows.Forms.ContextMenuStrip cmsInfo;
+        private System.Windows.Forms.ContextMenuStrip cmsFind;
+        private System.Windows.Forms.ToolStripMenuItem cmsInfo_tsiMore;
+        private System.Windows.Forms.ToolStripMenuItem cmsInfo_Less;
+        private System.Windows.Forms.ToolStripMenuItem cmsFind_tsiReset;
+        private System.Windows.Forms.ContextMenuStrip cms_dgvProd;
+        private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_Update;
+        private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiDelete;
+        private System.Windows.Forms.ToolStripSeparator cms_dgvProd_Separator;
+        private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiReset;
+        private System.Windows.Forms.ToolStripMenuItem cms_dgvProd_tsiAdd;
     }
 }

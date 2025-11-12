@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Nhóm1
 {
-    public partial class FrmSanPham : Form
+    public partial class frmProd : Form
     {
-        public FrmSanPham()
+        public frmProd()
         {
             InitializeComponent();
         }
@@ -28,49 +28,49 @@ namespace Nhóm1
 
         }
 
-        private void FrmSanPham_Load(object sender, EventArgs e)
+        private void frmProduct_Load(object sender, EventArgs e)
         {
-            txtTimKiem.Text = "Nhập tên để tìm";
-            txtTimKiem.ForeColor = Color.Gray;
-            txtTimKiem.Enter += (s, ev) =>
+            txtFind.Text = "Nhập tên để tìm";
+            txtFind.ForeColor = Color.Gray;
+            txtFind.Enter += (s, ev) =>
             {
-                if (txtTimKiem.Text == "Nhập tên để tìm")
+                if (txtFind.Text == "Nhập tên để tìm")
                 {
-                    txtTimKiem.Text = "";
-                    txtTimKiem.ForeColor = Color.Black;
+                    txtFind.Text = "";
+                    txtFind.ForeColor = Color.Black;
                 }
             };
-            txtTimKiem.Leave += (s, ev) =>
+            txtFind.Leave += (s, ev) =>
             {
-                if (string.IsNullOrEmpty(txtTimKiem.Text))
+                if (string.IsNullOrEmpty(txtFind.Text))
                 {
-                    txtTimKiem.Text = "Nhập tên để tìm";
-                    txtTimKiem.ForeColor = Color.Gray;
+                    txtFind.Text = "Nhập tên để tìm";
+                    txtFind.ForeColor = Color.Gray;
                 }
             };
         }
 
-        private void btnThemSP_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnLamMoi1_Click(object sender, EventArgs e)
+        private void btnFind_Reset_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
+        private void btnFind_Click(object sender, EventArgs e)
         {
 
         }
@@ -96,7 +96,7 @@ namespace Nhóm1
             frmBrand.Show(this);
         }
 
-        private void dataSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvProd_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -109,11 +109,6 @@ namespace Nhóm1
                 conn.Open();
 
             }
-        }
-
-        private void txtAge_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

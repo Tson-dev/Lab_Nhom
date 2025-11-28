@@ -53,7 +53,7 @@ namespace Nhóm1.TSon
 
         private void tsiUpdate_Click(object sender, EventArgs e)
         {
-            this.mode = 1;
+            this.mode = 2;
             ResizeForm(0);
             EnableControl(true);
             lvwCategory.Enabled = false;
@@ -145,6 +145,7 @@ namespace Nhóm1.TSon
             tsiDeselect.PerformClick();
             mode = 0;
             lvwCategory.Enabled = true;
+            tsiReload.PerformClick();
         }
         private void ClearText()
         {

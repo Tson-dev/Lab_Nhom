@@ -201,7 +201,12 @@ namespace Nhóm1
 
         private void cms_dgvProd_Update_Click(object sender, EventArgs e)
         {
-
+            if(dgvProd.CurrentRow != null)
+            {
+                mode = 2;
+                gbxInfo.Enabled = true;
+                gbxFind.Enabled = false;
+            }
         }
 
         private void cms_dgvProd_tsiDelete_Click(object sender, EventArgs e)

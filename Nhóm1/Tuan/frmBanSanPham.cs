@@ -180,6 +180,7 @@ namespace Nhóm1
             {
                 string qr = "";
                 LayIn4Loc(sender, e, ref qr);
+                MessageBox.Show(qr);
                 if (tenSP != "")
                 {
                     string tenHang = txtHang.Text.Trim();
@@ -325,9 +326,10 @@ namespace Nhóm1
             if (index == -1 && clbBrand.Items.Count > 0)
                 index = clbBrand.Items.Count - 1;
 
-            foreach (var item in clbBrand.CheckedItems)
+            foreach (var item in clbBrand.SelectedItems)
             {
                 hang.Add(item.ToString());
+                MessageBox.Show(item.ToString());
             }
             if (clbBrand.GetItemChecked(index))
             {
@@ -609,6 +611,7 @@ namespace Nhóm1
 
         private void btnTT_Click(object sender, EventArgs e)
         {
+            string bt = "Export";
             if (dgvGioHang.Rows.Count == 0)
             {
                 MessageBox.Show("Giỏ hàng trống. Vui lòng chọn sản phẩm trước khi thanh toán.",
@@ -643,11 +646,12 @@ namespace Nhóm1
                 {
                     // Thêm hóa đơn mới (Bill)
                     string insertBill = @"
-                INSERT INTO Bill (AccountID, Date, Total)
+                INSERT INTO Bill (AccountID,BillType, Date, Total)
                 OUTPUT INSERTED.ID
-                VALUES (@accID, GETDATE(), 0)";
+                VALUES (@accID,@billtype, GETDATE(), 0)";
                     SqlCommand cmdBill = new SqlCommand(insertBill, conn, tran);
                     cmdBill.Parameters.AddWithValue("@accID", accID);
+                    cmdBill.Parameters.AddWithValue("@billtype", bt);
 
                     int newBillID = Convert.ToInt32(cmdBill.ExecuteScalar());
 

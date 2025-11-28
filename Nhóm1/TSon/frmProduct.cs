@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using DataAccess;
 
 namespace Nhóm1
 {
@@ -22,7 +23,7 @@ namespace Nhóm1
             {
                 if (mode == 1)
                 {
-                    if(InsertUpdateDelete(mode)>0)
+                    if (InsertUpdateDelete(mode) > 0)
                     {
                         MessageBox.Show("Insert sucess");
                     }
@@ -128,7 +129,7 @@ namespace Nhóm1
         {
             if (!string.IsNullOrWhiteSpace(txtFind.Text))
             {
-                if(txtFind.Text == "Enter keyword")
+                if (txtFind.Text == "Enter keyword")
                 {
                     LoadDGVProd();
                     return;
@@ -138,11 +139,45 @@ namespace Nhóm1
                     SqlCommand cmd = conn.CreateCommand();
                     if (rbtnBrand.Checked)
                     {
-                        cmd.CommandText = $"select i.ID, i.[Name], case i.Gender when 0 then 'Unisex' when 1 then 'Male' when 2 then 'Female' end as Gender, i.Age, i.Size, t.[Name] as TypeName, i.Price, i.Stock, b.[Name] as BrandName from item i inner join Brand b on i.BrandID = b.ID inner join [Type] t on t.ID = i.TypeID where i.Actived = 1 and b.[Name] = N'{txtFind.Text}';";
+                        cmd.CommandText = $@"
+                                            select i.ID,
+                                                i.[Name],
+                                                case i.Gender
+                                                    when 0 then 'Unisex'
+                                                    when 1 then 'Male'
+                                                    when 2 then 'Female'
+                                                end as Gender,
+                                                i.Age, i.Size, 
+                                                t.[Name] as TypeName,
+                                                i.Price,
+                                                i.Stock,
+                                                b.[Name] as BrandName
+                                            from item i
+                                            inner join Brand b on i.BrandID = b.ID
+                                            inner join [Type] t on t.ID = i.TypeID
+                                            where i.Actived = 1 and b.[Name] = N'{txtFind.Text}';";
                     }
                     if (rbtnType.Checked)
                     {
-                        cmd.CommandText = $"select i.ID, i.[Name], case i.Gender when 0 then 'Unisex' when 1 then 'Male' when 2 then 'Female' end as Gender, i.Age, i.Size, t.[Name] as TypeName, i.Price, i.Stock, b.[Name] as BrandName from item i inner join Brand b on i.BrandID = b.ID inner join [Type] t on t.ID = i.TypeID where i.Actived = 1and t.[Name] = N'{txtFind.Text};";
+                        cmd.CommandText = $@"
+                                            select
+                                                i.ID,
+                                                i.[Name],
+                                                case i.Gender
+                                                    when 0 then 'Unisex'
+                                                    when 1 then 'Male'
+                                                    when 2 then 'Female'
+                                                end as Gender,
+                                                i.Age,
+                                                i.Size,
+                                                t.[Name] as TypeName,
+                                                i.Price,
+                                                i.Stock,
+                                                b.[Name] as BrandName
+                                            from item i
+                                            inner join Brand b on i.BrandID = b.ID
+                                            inner join [Type] t on t.ID = i.TypeID
+                                            where i.Actived = 1and t.[Name] = N'{txtFind.Text};";
                     }
                     conn.Open();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -155,7 +190,7 @@ namespace Nhóm1
 
         private void cms_dgvProd_tsiAdd_Click(object sender, EventArgs e)
         {
-            if(dgvProd.CurrentRow == null)
+            if (dgvProd.CurrentRow == null)
             {
                 ResetInfo();
                 mode = 1;
@@ -166,13 +201,18 @@ namespace Nhóm1
 
         private void cms_dgvProd_Update_Click(object sender, EventArgs e)
         {
-
+            if(dgvProd.CurrentRow != null)
+            {
+                mode = 2;
+                gbxInfo.Enabled = true;
+                gbxFind.Enabled = false;
+            }
         }
 
         private void cms_dgvProd_tsiDelete_Click(object sender, EventArgs e)
         {
             this.mode = 3;
-            if(InsertUpdateDelete(mode)>0)
+            if (InsertUpdateDelete(mode) > 0)
             {
                 MessageBox.Show("success Delete");
             }
@@ -225,7 +265,25 @@ namespace Nhóm1
         {
             using (SqlConnection conn = new SqlConnection(Connection.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand("select i.ID, i.[Name], case i.Gender when 0 then 'Unisex' when 1 then 'Male' when 2 then 'Female' end as Gender, i.Age, i.Size, t.[Name] as TypeName, i.Price, i.Stock, b.[Name] as BrandName from item i inner join Brand b on i.BrandID = b.ID inner join [Type] t on t.ID = i.TypeID where i.Actived = 1;", conn);
+                SqlCommand cmd = new SqlCommand(@"
+                    select
+                        i.ID,
+                        i.[Name],
+                        case i.Gender
+                            when 0 then 'Unisex'
+                            when 1 then 'Male'
+                            when 2 then 'Female'
+                        end as Gender,
+                        i.Age,
+                        i.Size,
+                        t.[Name] as TypeName,
+                        i.Price, i.Stock,
+                        b.[Name] as BrandName
+                    from item i
+                    inner join Brand b on i.BrandID = b.ID
+                    inner join [Type] t on t.ID = i.TypeID
+                    where i.Actived = 1;",
+                    conn);
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable("Product");
@@ -276,7 +334,7 @@ namespace Nhóm1
 
         private void dgvProd_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgvProd.CurrentRow != null && dgvProd.Rows.Count - 1 > dgvProd.CurrentRow.Index)
+            if (dgvProd.CurrentRow != null && dgvProd.Rows.Count - 1 > dgvProd.CurrentRow.Index)
             {
                 cms_dgvProd_tsiAdd.Enabled = false;
                 cms_dgvProd_tsiAdd.Visible = false;
@@ -300,7 +358,7 @@ namespace Nhóm1
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
-                foreach(DataRow row in dt.Rows)
+                foreach (DataRow row in dt.Rows)
                     cbxType.Items.Add(row[0].ToString());
             }
         }

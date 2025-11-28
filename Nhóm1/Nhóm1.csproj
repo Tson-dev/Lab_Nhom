@@ -48,6 +48,7 @@
       <HintPath>..\packages\System.CodeDom.9.0.4\lib\net462\System.CodeDom.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -97,35 +98,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connection.cs" />
-    <Compile Include="frmBrand.cs">
+    <Compile Include="Misc\frmBrand.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBrand.Designer.cs">
+    <Compile Include="Misc\frmBrand.Designer.cs">
       <DependentUpon>frmBrand.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDangNhap.cs">
+    <Compile Include="Toan\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDangNhap.Designer.cs">
+    <Compile Include="Toan\frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmInHoaDon.cs">
+    <Compile Include="Misc\frmPrintBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInHoaDon.Designer.cs">
-      <DependentUpon>frmInHoaDon.cs</DependentUpon>
+    <Compile Include="Misc\frmPrintBill.Designer.cs">
+      <DependentUpon>frmPrintBill.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNhanVien.cs">
+    <Compile Include="Tuan\frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNhanVien.Designer.cs">
+    <Compile Include="Tuan\frmNhanVien.Designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="TSon\frmType.cs">
+    <Compile Include="Misc\frmThongKe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TSon\frmType.Designer.cs">
+    <Compile Include="Misc\frmThongKe.Designer.cs">
+      <DependentUpon>frmThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\frmType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Misc\frmType.Designer.cs">
       <DependentUpon>frmType.cs</DependentUpon>
     </Compile>
     <Compile Include="TSon\frmStatictis.cs">
@@ -134,28 +140,28 @@
     <Compile Include="TSon\frmStatictis.Designer.cs">
       <DependentUpon>frmStatictis.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTrangChu.cs">
+    <Compile Include="Tien\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTrangChu.Designer.cs">
-      <DependentUpon>frmTrangChu.cs</DependentUpon>
+    <Compile Include="Tien\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmHoaDon.cs">
+    <Compile Include="Toan\frmHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmHoaDon.Designer.cs">
+    <Compile Include="Toan\frmHoaDon.Designer.cs">
       <DependentUpon>frmHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmKho.cs">
+    <Compile Include="Tien\frmKho.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmKho.Designer.cs">
+    <Compile Include="Tien\frmKho.Designer.cs">
       <DependentUpon>frmKho.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBanSanPham.cs">
+    <Compile Include="Tuan\frmBanSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBanSanPham.Designer.cs">
+    <Compile Include="Tuan\frmBanSanPham.Designer.cs">
       <DependentUpon>frmBanSanPham.cs</DependentUpon>
     </Compile>
     <Compile Include="TSon\frmProduct.cs">
@@ -168,40 +174,43 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoan.cs" />
-    <Compile Include="trangchu.cs">
+    <Compile Include="Misc\frmCreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="trangchu.Designer.cs">
-      <DependentUpon>trangchu.cs</DependentUpon>
+    <Compile Include="Misc\frmCreateAccount.Designer.cs">
+      <DependentUpon>frmCreateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tạo tài khoản.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tạo tài khoản.Designer.cs">
-      <DependentUpon>Tạo tài khoản.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="frmBrand.resx">
+    <EmbeddedResource Include="Misc\frmBrand.resx">
       <DependentUpon>frmBrand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDangNhap.resx">
+    <EmbeddedResource Include="Misc\frmPrintBill.resx">
+      <DependentUpon>frmPrintBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Toan\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNhanVien.resx">
+    <EmbeddedResource Include="TSon\frmStatictis.resx">
+      <DependentUpon>frmStatictis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tuan\frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTrangChu.resx">
-      <DependentUpon>frmTrangChu.cs</DependentUpon>
+    <EmbeddedResource Include="Misc\frmThongKe.resx">
+      <DependentUpon>frmThongKe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmHoaDon.resx">
+    <EmbeddedResource Include="Tien\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Toan\frmHoaDon.resx">
       <DependentUpon>frmHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmKho.resx">
+    <EmbeddedResource Include="Tien\frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBanSanPham.resx">
+    <EmbeddedResource Include="Tuan\frmBanSanPham.resx">
       <DependentUpon>frmBanSanPham.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TSon\frmType.resx">
+    <EmbeddedResource Include="Misc\frmType.resx">
       <DependentUpon>frmType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TSon\frmProduct.resx">
@@ -216,14 +225,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="trangchu.resx">
-      <DependentUpon>trangchu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TSon\frmStatictis.resx">
-      <DependentUpon>frmStatictis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tạo tài khoản.resx">
-      <DependentUpon>Tạo tài khoản.cs</DependentUpon>
+    <EmbeddedResource Include="Misc\frmCreateAccount.resx">
+      <DependentUpon>frmCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -239,5 +242,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{fa53cd3c-e576-4ca1-adba-755f684fb3f2}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

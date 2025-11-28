@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using DataAccess;
 
 namespace Nhóm1
 {
@@ -253,9 +254,23 @@ namespace Nhóm1
         }
         private void TableToChart(DataTable dt)
         {
+            Series sExport = new Series("Export");
+            sExport.ChartType = SeriesChartType.Area;
+            sExport.Color = System.Drawing.Color.FromArgb(80, 46, 204, 113);
+            sExport.BorderWidth = 2;
+
+            Series sImport = new Series("Import");
+            sImport.ChartType = SeriesChartType.Area;
+            sImport.Color = System.Drawing.Color.FromArgb(80, 52, 152, 219);
+            sImport.BorderWidth = 2;
+
             if (mode == 0)
             {
-                
+                DateTime temp = this.from;
+                while(temp.ToShortDateString() == this.to.ToShortDateString())
+                {
+
+                }
             }
             else if (mode == 1)
             {
@@ -266,10 +281,6 @@ namespace Nhóm1
 
             }
             else if (mode == 3)
-            {
-
-            }
-            else if (mode == 4)
             {
 
             }
